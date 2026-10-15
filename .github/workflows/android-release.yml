@@ -43,7 +43,7 @@ jobs:
           storePassword=freebuddy-debug-2026
           keyPassword=freebuddy-debug-2026
           keyAlias=freebuddy-debug
-          storeFile=freebuddy-debug.keystore
+          storeFile=../freebuddy-debug.keystore
           EOF
 
       - name: Build release APK
