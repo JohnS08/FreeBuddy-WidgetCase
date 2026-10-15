@@ -59,7 +59,6 @@ class BluetoothDeviceConnectedReceiver : BroadcastReceiver() {
                     .setInputData(
                         Data.Builder()
                             .putString(BackgroundWorker.DART_TASK_KEY, TASK_ID_ROUTINE_UPDATE)
-                            .putBoolean(BackgroundWorker.IS_IN_DEBUG_MODE_KEY, false)
                             .build()
                     )
                     .build()
