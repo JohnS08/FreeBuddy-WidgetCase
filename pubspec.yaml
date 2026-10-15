@@ -64,7 +64,7 @@ dependencies:
     sdk: flutter
   intl: ^0.20.3
   ## This is low-level, but I *do* use it to mix colors here and there
-  material_color_utilities: ^0.11.0
+  material_color_utilities: ^0.13.0
   material_symbols_icons: ^4.2801.0
 
 dependency_overrides:
