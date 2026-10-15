@@ -107,7 +107,7 @@ Future<void> init() async {
     taskIdRoutineUpdate,
     frequency: const Duration(minutes: 30),
     initialDelay: const Duration(minutes: 5),
-    existingWorkPolicy: ExistingWorkPolicy.update,
+    existingWorkPolicy: ExistingPeriodicWorkPolicy.update,
     backoffPolicy: BackoffPolicy.linear,
   );
 }
