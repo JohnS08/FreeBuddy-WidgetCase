@@ -28,8 +28,8 @@ Future<void> initNotifications() async {
   await androidPlugin?.requestNotificationsPermission();
   await androidPlugin?.createNotificationChannel(const AndroidNotificationChannel(
     notificationChannelId,
-    'Case battery',
-    description: 'Low case battery alerts for FreeBuds',
+    'Заряд кейса',
+    description: 'Уведомления о низком заряде кейса FreeBuds',
     importance: Importance.low,
   ));
 }
@@ -42,12 +42,12 @@ Future<void> _checkLowCaseBattery(LRCBatteryLevels batteryData) async {
   if (level <= lowCaseBatteryThreshold && !alreadyNotified) {
     await _notifications.show(
       1001,
-      'FreeBuds case battery',
+      'Низкий заряд кейса FreeBuds',
       'Case FreeBuds: $level%',
       const NotificationDetails(android: AndroidNotificationDetails(
         notificationChannelId,
-        'Case battery',
-        channelDescription: 'Low case battery alerts for FreeBuds',
+        'Заряд кейса',
+        channelDescription: 'Уведомления о низком заряде кейса FreeBuds',
         importance: Importance.low,
         priority: Priority.low,
         icon: '@mipmap/ic_launcher',

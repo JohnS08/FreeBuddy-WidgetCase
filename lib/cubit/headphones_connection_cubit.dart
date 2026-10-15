@@ -282,7 +282,8 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
       return;
     }
     // it's down here to be sure that we do have device connected so
-    if (!await Permission.bluetoothConnect.isGranted) {
+    if (!await Permission.bluetoothConnect.isGranted ||
+        !await Permission.bluetoothScan.isGranted) {
       emit(const HeadphonesNoPermission());
       return;
     }
@@ -312,7 +313,10 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
   }
 
   Future<void> requestPermission() async {
-    await Permission.bluetoothConnect.request();
+    await [
+      Permission.bluetoothConnect,
+      Permission.bluetoothScan,
+    ].request();
     await _init();
   }
 

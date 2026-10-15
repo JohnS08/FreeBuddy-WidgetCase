@@ -20,7 +20,9 @@ typedef MatchedModel = ({
 });
 
 MatchedModel? matchModel(BluetoothDevice matchedDevice) {
-  final name = matchedDevice.name.value;
+  final name = matchedDevice.name.valueOrNull ??
+      matchedDevice.alias.valueOrNull ??
+      '';
   return switch (name) {
     _ when HuaweiFreeBuds4i.idNameRegex.hasMatch(name) => (
         builder: (io, dev) => HuaweiFreeBuds4iImpl(mbbChannel(io), dev),

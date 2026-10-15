@@ -30,5 +30,5 @@ abstract base class HuaweiFreeBuds3i
   // As I said everywhere else - i have no good idea where to put this stuff :/
   // This will be a bit of chaos for now 👍👍
   static final idNameRegex =
-      RegExp(r'^(?=(HUAWEI FreeBuds 3i))', caseSensitive: true);
+      RegExp(r'^(?=.*(?:HUAWEI\s+)?FreeBuds\s+3i)', caseSensitive: false);
 }
