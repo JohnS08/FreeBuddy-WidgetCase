@@ -37,6 +37,15 @@ jobs:
       - name: Analyze Dart code
         run: flutter analyze --no-fatal-infos
 
+      - name: Configure stable debug signing key
+        run: |
+          cat > android/key.properties <<'EOF'
+          storePassword=freebuddy-debug-2026
+          keyPassword=freebuddy-debug-2026
+          keyAlias=freebuddy-debug
+          storeFile=freebuddy-debug.keystore
+          EOF
+
       - name: Build release APK
         run: flutter build apk --release
 

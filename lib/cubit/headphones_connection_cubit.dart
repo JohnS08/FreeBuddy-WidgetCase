@@ -300,8 +300,16 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
   // TODO:
   Future<bool> enableBluetooth() async => false;
 
-  Future<void> openBluetoothSettings() => AppSettings.openAppSettings(
-      type: AppSettingsType.bluetooth, asAnotherTask: true);
+  Future<void> openBluetoothSettings() async {
+    try {
+      // Keep Settings in the normal task. Opening it as another task can leave
+      // the Flutter activity looking frozen on some Android launchers.
+      await AppSettings.openAppSettings(type: AppSettingsType.bluetooth)
+          .timeout(const Duration(seconds: 3));
+    } catch (e, s) {
+      loggI.w('Could not open Bluetooth settings', error: e, stackTrace: s);
+    }
+  }
 
   Future<void> requestPermission() async {
     await Permission.bluetoothConnect.request();
