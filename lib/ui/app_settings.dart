@@ -16,12 +16,17 @@ abstract class AppSettings {
   Stream<String> get sleepModePreviousSettings;
 
   Future<bool> setSleepModePreviousSettings(String value);
+
+  Stream<int> get caseBatteryThreshold;
+
+  Future<bool> setCaseBatteryThreshold(int value);
 }
 
 enum _Prefs {
   seenIntroduction('seenIntroduction', false),
   sleepMode('sleepMode', false),
   sleepModePreviousSettings('sleepModePreviousSettings', '');
+  caseBatteryThreshold('caseBatteryThreshold', 20);
 
   const _Prefs(this.key, this.defaultValue);
 
@@ -47,6 +52,10 @@ class SharedPreferencesAppSettings implements AppSettings {
       preferences.then((p) => p.getString(_Prefs.sleepModePreviousSettings.key,
           defaultValue: _Prefs.sleepModePreviousSettings.defaultValue));
 
+  Future<Preference<int>> get _caseBatteryThreshold =>
+      preferences.then((p) => p.getInt(_Prefs.caseBatteryThreshold.key,
+          defaultValue: _Prefs.caseBatteryThreshold.defaultValue));
+
   @override
   Stream<bool> get seenIntroduction => LazyStream(() => _seenIntroduction);
 
@@ -68,4 +77,12 @@ class SharedPreferencesAppSettings implements AppSettings {
   @override
   Future<bool> setSleepModePreviousSettings(String value) =>
       _sleepModePreviousSettings.then((v) => v.setValue(value));
+
+  @override
+  Stream<int> get caseBatteryThreshold =>
+      LazyStream(() => _caseBatteryThreshold);
+
+  @override
+  Future<bool> setCaseBatteryThreshold(int value) =>
+      _caseBatteryThreshold.then((v) => v.setValue(value));
 }

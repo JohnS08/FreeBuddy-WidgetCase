@@ -16,7 +16,8 @@ import '../appwidgets/battery_appwidget.dart';
 
 const commonTimeout = Duration(seconds: 10);
 const taskIdRoutineUpdate = 'freebuddy.routine_update';
-const lowCaseBatteryThreshold = 20;
+const defaultCaseBatteryThreshold = 20;
+const caseBatteryThresholdPreferenceKey = 'caseBatteryThreshold';
 const notificationChannelId = 'case_battery_low';
 
 final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
@@ -38,8 +39,16 @@ Future<void> _checkLowCaseBattery(LRCBatteryLevels batteryData) async {
   final level = batteryData.levelCase;
   if (level == null || batteryData.chargingCase) return;
   final prefs = await SharedPreferences.getInstance();
-  final alreadyNotified = prefs.getBool('case_low_notified') ?? false;
-  if (level <= lowCaseBatteryThreshold && !alreadyNotified) {
+  final threshold = prefs.getInt(caseBatteryThresholdPreferenceKey) ??
+      defaultCaseBatteryThreshold;
+  final previousThreshold = prefs.getInt('case_last_notification_threshold');
+  final thresholdChanged = previousThreshold != null &&
+      previousThreshold != threshold;
+  final alreadyNotified = thresholdChanged
+      ? false
+      : (prefs.getBool('case_low_notified') ?? false);
+  await prefs.setInt('case_last_notification_threshold', threshold);
+  if (level <= threshold && !alreadyNotified) {
     await _notifications.show(
       1001,
       'Низкий заряд кейса FreeBuds',
@@ -55,7 +64,7 @@ Future<void> _checkLowCaseBattery(LRCBatteryLevels batteryData) async {
       )),
     );
     await prefs.setBool('case_low_notified', true);
-  } else if (level > lowCaseBatteryThreshold && alreadyNotified) {
+  } else if (level > threshold && alreadyNotified) {
     await prefs.setBool('case_low_notified', false);
   }
 }

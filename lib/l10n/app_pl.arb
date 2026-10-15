@@ -48,6 +48,9 @@
   "ancAwarenessDesc": "Pozwala ci słyszeć twoje otoczenie",
 
   "settings": "Ustawienia",
+  "caseBatteryThresholdTitle": "Próg powiadomienia o baterii etui",
+  "caseBatteryThresholdDescription": "Powiadom, gdy bateria etui spadnie do lub poniżej:",
+  "caseBatteryThresholdHint": "Wybierz wartość od 5% do 50%.",
   "privacyPolicy": "Polityka prywatności",
   "privacyPolicyTitle": "\"Polityka prywatności\"",
   "privacyPolicyText": "Ta aplikacja nie zbiera żadnych informacji o tobie - żadnych emaili, identyfikatorów, lub czegokolwiek takiego na serwerze, bo nawet go nie mam :D\nFreeBuddy nie korzysta też z Google Analytics, czy innego serwisu który zbierałby twoje dane <3",
