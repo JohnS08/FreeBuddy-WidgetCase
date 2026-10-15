@@ -35,9 +35,16 @@ Future<void> updateBatteryHomeWidget(LRCBatteryLevels batteryData) async {
   await HomeWidget.saveWidgetData<int?>('left', batteryData.levelLeft);
   await HomeWidget.saveWidgetData<int?>('right', batteryData.levelRight);
   await HomeWidget.saveWidgetData<int?>('case', batteryData.levelCase);
+  await HomeWidget.saveWidgetData<bool>('case_charging', batteryData.chargingCase);
   await HomeWidget.updateWidget(
     name: 'BatteryWidgetReceiver',
     androidName: 'BatteryWidgetReceiver',
     qualifiedAndroidName: 'com.lastgimbus.the.freebuddy.BatteryWidgetReceiver',
+  );
+  await HomeWidget.updateWidget(
+    name: 'CaseBatteryWidgetReceiver',
+    androidName: 'CaseBatteryWidgetReceiver',
+    qualifiedAndroidName:
+        'com.lastgimbus.the.freebuddy.CaseBatteryWidgetReceiver',
   );
 }

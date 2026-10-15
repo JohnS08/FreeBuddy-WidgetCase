@@ -43,6 +43,8 @@ dependencies:
   dynamic_color: ^1.7.0
   home_widget: ^0.7.0
   workmanager: ^0.5.0
+  flutter_local_notifications: ^18.0.1
+  shared_preferences: ^2.3.3
   flutter_native_splash: ^2.4.0
 
   # Logic libs

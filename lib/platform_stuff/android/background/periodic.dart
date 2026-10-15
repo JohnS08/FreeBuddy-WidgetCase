@@ -1,7 +1,9 @@
-/// Stuff that happens periodically, like 15 or 60 minute intervals
-///
-/// Right now it is small and simple enough to have everything in one file
+/// Background work for occasional case-battery refreshes and notifications.
 
+import 'dart:ui';
+
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:workmanager/workmanager.dart';
 
@@ -12,89 +14,98 @@ import '../../../headphones/framework/lrc_battery.dart';
 import '../../../logger.dart';
 import '../appwidgets/battery_appwidget.dart';
 
-/// Currently existing tasks
-/// - "ROUTINE_UPDATE" - this will run every 15 minute, connect to headphones,
-///   get their battery and set widgets/send notifications etc
-// maybe move them to some special class/enum/smth??
-
 const commonTimeout = Duration(seconds: 10);
+const taskIdRoutineUpdate = 'freebuddy.routine_update';
+const lowCaseBatteryThreshold = 20;
+const notificationChannelId = 'case_battery_low';
 
-const taskIdRoutineUpdate = "freebuddy.routine_update";
+final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
+
+Future<void> initNotifications() async {
+  const android = AndroidInitializationSettings('@mipmap/ic_launcher');
+  await _notifications.initialize(const InitializationSettings(android: android));
+  final androidPlugin = _notifications.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+  await androidPlugin?.requestNotificationsPermission();
+  await androidPlugin?.createNotificationChannel(const AndroidNotificationChannel(
+    notificationChannelId,
+    'Case battery',
+    description: 'Low case battery alerts for FreeBuds',
+    importance: Importance.low,
+  ));
+}
+
+Future<void> _checkLowCaseBattery(LRCBatteryLevels batteryData) async {
+  final level = batteryData.levelCase;
+  if (level == null || batteryData.chargingCase) return;
+  final prefs = await SharedPreferences.getInstance();
+  final alreadyNotified = prefs.getBool('case_low_notified') ?? false;
+  if (level <= lowCaseBatteryThreshold && !alreadyNotified) {
+    await _notifications.show(
+      1001,
+      'FreeBuds case battery',
+      'Case FreeBuds: $level%',
+      const NotificationDetails(android: AndroidNotificationDetails(
+        notificationChannelId,
+        'Case battery',
+        channelDescription: 'Low case battery alerts for FreeBuds',
+        importance: Importance.low,
+        priority: Priority.low,
+        icon: '@mipmap/ic_launcher',
+        onlyAlertOnce: true,
+      )),
+    );
+    await prefs.setBool('case_low_notified', true);
+  } else if (level > lowCaseBatteryThreshold && alreadyNotified) {
+    await prefs.setBool('case_low_notified', false);
+  }
+}
 
 Future<bool> routineUpdateCallback() async {
-  // TODO: Multi-headphones BIG decisions here 😬😬 - possibly impossible to resolve without nuking all of this
-  // NOT_SURE: Also use real/mock logic here?? idk, but if you want,
-  // feel free to make some proper DI for this to be shared in UI and here
   HeadphonesConnectionCubit? cubit;
   try {
-    // i think this function is still "dependency injection" safe
-    // ...but it's not wise to keep remembering what is and what isn't, is it?
-    if (await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere()) {
-      loggI.d("Not updating stuff from ROUTINE_UPDATE "
-          "because cubit is already running");
-      return true;
-    }
+    if (await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere()) return true;
     cubit = di.getHeadphonesCubit();
     final headphones = await cubit.stream
         .debounceTime(const Duration(seconds: 1))
         .firstWhere((e) => e is! HeadphonesConnecting)
         .timeout(commonTimeout);
-    if (headphones is! HeadphonesConnectedOpen) {
-      loggI.d("Not updating stuff from ROUTINE_UPDATE because: "
-          "${headphones.toString()}");
-      return true;
-    }
-    if (headphones.headphones is! LRCBattery) {
-      loggI.d("Not updating stuff from ROUTINE_UPDATE because connected "
-          "headphones don't support LRCBattery");
-      return true;
-    }
-    final batteryData = await (headphones.headphones as LRCBattery)
-        .lrcBattery
-        .first
-        .timeout(commonTimeout);
-    loggI.d("udpating widget from bgn: $batteryData");
+    if (headphones is! HeadphonesConnectedOpen || headphones.headphones is! LRCBattery) return true;
+    final batteryData = await (headphones.headphones as LRCBattery).lrcBattery.first.timeout(commonTimeout);
     await updateBatteryHomeWidget(batteryData);
-    await cubit.close(); // remember to close cubit to deregister port name
+    await _checkLowCaseBattery(batteryData);
+    await cubit.close();
     return true;
   } catch (e) {
-    await cubit?.close(); // remember to close cubit to deregister port name
+    await cubit?.close();
     rethrow;
   }
 }
 
 @pragma('vm:entry-point')
 void callbackDispatcher() {
-  // this $task is a name, not id?? wtf??
-  Workmanager().executeTask((task, inputData) {
-    loggI.d("Running periodic task $task"
-        "${inputData != null ? " - input data: $inputData" : ""}");
+  Workmanager().executeTask((task, inputData) async {
+    DartPluginRegistrant.ensureInitialized();
+    await initNotifications();
     try {
       return switch (task) {
-        taskIdRoutineUpdate => routineUpdateCallback().timeout(commonTimeout),
-        String() => throw Exception("No such task named $task"),
+        taskIdRoutineUpdate => await routineUpdateCallback().timeout(commonTimeout),
+        String() => throw Exception('No such task named $task'),
       };
     } catch (e, s) {
-      loggI.e("Periodic task $task failed", error: e, stackTrace: s);
-      return Future.value(false);
+      loggI.e('Periodic task $task failed', error: e, stackTrace: s);
+      return false;
     }
   });
 }
 
-/// Init all workmanager stuff
-/// this is async so run this safely in main() before runApp()
-// remember to not put anything too heavy here, we want fassst app launch
+/// Bluetooth connection broadcasts trigger an immediate refresh; this is only a low-frequency safety net.
 Future<void> init() async {
-  await Workmanager().initialize(
-    callbackDispatcher,
-    // If enabled it will post a notification whenever the task is running
-    // disabling for now because android 13 permission 🙃
-    isInDebugMode: false,
-  );
+  await initNotifications();
+  await Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
   await Workmanager().registerPeriodicTask(
-    taskIdRoutineUpdate, // this doesnt get exposed in executeTask()
-    taskIdRoutineUpdate, // ...so pass it here too 🙃
-    frequency: const Duration(minutes: 15),
+    taskIdRoutineUpdate,
+    taskIdRoutineUpdate,
+    frequency: const Duration(minutes: 30),
     initialDelay: const Duration(minutes: 5),
     existingWorkPolicy: ExistingWorkPolicy.update,
     backoffPolicy: BackoffPolicy.linear,

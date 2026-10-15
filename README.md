@@ -30,6 +30,18 @@ Right now FreeBuddy only supports handful of models, but this is ment to expand 
 FreeBuddy can already do everything that stock apps can, while adding own features:
  - Home screen widget with battery charge 🔋
 
+### Case-only widget
+
+This fork adds a compact Android widget that displays only the FreeBuds case
+battery level. It updates on Bluetooth connection and through a low-frequency
+30-minute WorkManager safety check. The background worker closes its Bluetooth
+session after reading the battery data and does not use a foreground service.
+
+When the case crosses below 20% while not charging, Android shows the single
+deduplicated notification `Case FreeBuds: NN%`. The alert is armed again after
+the case is charged above the threshold. Android 13+ notification permission is
+requested on first launch.
+
 ## Download 📦
 
 | Platform | Installation        |

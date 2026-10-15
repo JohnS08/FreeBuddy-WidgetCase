@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <!-- Needed only if your app communicates with already-paired Bluetooth devices. -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
 
     <application
@@ -54,6 +55,17 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/battery_widget_config" />
+        </receiver>
+
+        <receiver
+            android:name=".CaseBatteryWidgetReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/case_battery_widget_config" />
         </receiver>
 
         <receiver
