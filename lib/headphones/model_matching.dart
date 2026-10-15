@@ -24,7 +24,11 @@ MatchedModel? matchModel(BluetoothDevice matchedDevice) {
       matchedDevice.alias.valueOrNull ??
       '';
   return switch (name) {
-    _ when HuaweiFreeBuds4i.idNameRegex.hasMatch(name) => (
+    // FreeBuds 5i use the same protocol implementation as 4i. The original
+    // FreeBuddy project verified this in its 5i-test branch.
+    _ when HuaweiFreeBuds4i.idNameRegex.hasMatch(name) ||
+        RegExp(r'^(?=.*(?:HUAWEI\s+)?FreeBuds\s+5i)', caseSensitive: false)
+            .hasMatch(name) => (
         builder: (io, dev) => HuaweiFreeBuds4iImpl(mbbChannel(io), dev),
         placeholder: const HuaweiFreeBuds4iSimPlaceholder(),
       ) as MatchedModel,

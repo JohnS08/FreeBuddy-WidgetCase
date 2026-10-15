@@ -17,6 +17,7 @@ FreeBuddy Case — Android-приложение для Huawei FreeBuds 4i и Fre
 ## Поддерживаемые модели
 
 - Huawei FreeBuds 4i;
+- Huawei FreeBuds 5i;
 - Huawei FreeBuds 3i.
 
 ![FreeBuddy Case](assets/sluchaweczki.png)
