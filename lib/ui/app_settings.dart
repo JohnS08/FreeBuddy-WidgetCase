@@ -25,7 +25,7 @@ abstract class AppSettings {
 enum _Prefs {
   seenIntroduction('seenIntroduction', false),
   sleepMode('sleepMode', false),
-  sleepModePreviousSettings('sleepModePreviousSettings', '');
+  sleepModePreviousSettings('sleepModePreviousSettings', ''),
   caseBatteryThreshold('caseBatteryThreshold', 20);
 
   const _Prefs(this.key, this.defaultValue);
