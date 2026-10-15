@@ -20,6 +20,7 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
   StreamSubscription? _btEnabledStream;
   StreamSubscription? _devStream;
   final Map<BluetoothDevice, StreamSubscription> _watchedKnownDevices = {};
+  bool _connectInProgress = false;
   static const connectTries = 3;
   static const killOtherCubitTimeout = Duration(seconds: 3);
   static const _killUrself = "kill urself";
@@ -101,15 +102,18 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
   static const sppUuid = "00001101-0000-1000-8000-00805f9b34fb";
 
   Future<void> connect() async {
-    if (_connection != null) return;
+    if (_connection != null || _connectInProgress) return;
     final connected = _watchedKnownDevices.keys
         .firstWhereOrNull((dev) => dev.isConnected.valueOrNull ?? false);
     if (connected != null) {
-      _connect(connected, matchModel(connected)!);
+      final model = matchModel(connected);
+      if (model != null) await _connect(connected, model);
     }
   }
 
   Future<void> _connect(BluetoothDevice dev, MatchedModel model) async {
+    if (_connectInProgress || _connection != null) return;
+    _connectInProgress = true;
     final placeholder = model.placeholder;
     emit(HeadphonesConnecting(placeholder));
     try {
@@ -152,12 +156,16 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
     _connection = null;
     // if disconnected because of bluetooth, don't emit
     // this is because we made async gap when awaiting stream close
-    if (!(_bluetooth.isEnabled.valueOrNull ?? false)) return;
+    if (!(_bluetooth.isEnabled.valueOrNull ?? false)) {
+      _connectInProgress = false;
+      return;
+    }
     emit(
       (dev.isConnected.valueOrNull ?? false)
           ? HeadphonesConnectedClosed(placeholder)
           : HeadphonesDisconnected(placeholder),
     );
+    _connectInProgress = false;
   }
 
   Future<void> _pairedDevicesHandle(Iterable<BluetoothDevice> devices) async {
@@ -179,11 +187,14 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
     for (final hp in knownHeadphones) {
       if (!_watchedKnownDevices.containsKey(hp.device)) {
         _watchedKnownDevices[hp.device] =
-            hp.device.isConnected.listen((connected) {
-          if (connected) {
-            if (_connection != null) return; // already connected, skip
-            _connect(hp.device, hp.match!);
-          } else {
+          hp.device.isConnected.listen((connected) {
+            if (connected) {
+              if (_connection != null || _connectInProgress) return;
+              // RFCOMM connect() is synchronous in the Bluetooth plugin. Do
+              // not invoke it from the device stream callback; the explicit
+              // UI action starts the attempt instead.
+              emit(HeadphonesConnectedClosed(hp.match!.placeholder));
+            } else {
             _connection?.sink.close();
             _connection = null;
             emit(HeadphonesDisconnected(hp.match!.placeholder));
@@ -192,7 +203,7 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
       }
     }
     // "Remove any device from _watched that's not in knownHp"
-    for (final dev in _watchedKnownDevices.keys) {
+    for (final dev in _watchedKnownDevices.keys.toList()) {
       if (!knownHeadphones.map((e) => e.device).contains(dev)) {
         _watchedKnownDevices[dev]!.cancel();
         _watchedKnownDevices.remove(dev);
