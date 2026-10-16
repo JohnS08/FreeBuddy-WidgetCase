@@ -1,6 +1,6 @@
 # FreeBuddy Case
 
-FreeBuddy Case — Android-приложение для Huawei FreeBuds 4i и FreeBuds 3i.
+FreeBuddy Case — Android-приложение для Huawei FreeBuds 3i, 4i и 5i.
 
 Приложение показывает заряд левого и правого наушника и кейса, позволяет управлять основными функциями наушников и содержит компактный виджет только для заряда кейса. При снижении заряда ниже заданного порога приложение может показать уведомление.
 
@@ -16,9 +16,10 @@ FreeBuddy Case — Android-приложение для Huawei FreeBuds 4i и Fre
 
 ## Поддерживаемые модели
 
+- Huawei FreeBuds 3i;
 - Huawei FreeBuds 4i;
-- Huawei FreeBuds 5i;
-- Huawei FreeBuds 3i.
+- Huawei FreeBuds 5i.
+
 
 ![FreeBuddy Case](assets/sluchaweczki.png)
 
