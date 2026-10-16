@@ -23,8 +23,13 @@ const lastCaseChargingKey = 'case_last_charging';
 const notificationChannelId = 'case_battery_low_v3';
 
 final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
+Future<void>? _notificationsInit;
 
-Future<void> initNotifications() async {
+Future<void> initNotifications() {
+  return _notificationsInit ??= _initNotifications();
+}
+
+Future<void> _initNotifications() async {
   const android = AndroidInitializationSettings('@mipmap/ic_launcher');
   await _notifications.initialize(const InitializationSettings(android: android));
   final androidPlugin = _notifications.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();

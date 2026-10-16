@@ -8,15 +8,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../cubit/headphones_cubit_objects.dart';
 import '../../../headphones/framework/lrc_battery.dart';
 import '../../../logger.dart';
+import '../background/periodic.dart' as android_periodic;
 
 // no better idea for this yet - that's fine
 StreamSubscription<LRCBatteryLevels>? _headphonesBatteryStreamSub;
+bool _connectionNotificationScheduled = false;
 
 void batteryHomeWidgetHearBloc(BuildContext context,
     HeadphonesConnectionState headphonesConnectionState) async {
   if (headphonesConnectionState is! HeadphonesConnectedOpen) {
     await _headphonesBatteryStreamSub?.cancel();
     _headphonesBatteryStreamSub = null;
+    _connectionNotificationScheduled = false;
   } else if (headphonesConnectionState.headphones is LRCBattery) {
     _headphonesBatteryStreamSub =
         (headphonesConnectionState.headphones as LRCBattery)
@@ -27,6 +30,13 @@ void batteryHomeWidgetHearBloc(BuildContext context,
             .listen((event) async {
       logg.d("Updating widget from UI listener: $event");
       await updateBatteryHomeWidget(event);
+      if (!_connectionNotificationScheduled) {
+        _connectionNotificationScheduled = true;
+        unawaited(Future<void>.delayed(
+          const Duration(milliseconds: 500),
+          android_periodic.checkStoredCaseBatteryNotification,
+        ));
+      }
     });
   }
 }
