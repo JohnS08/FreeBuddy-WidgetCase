@@ -83,7 +83,13 @@ Future<void> checkStoredCaseBatteryNotification() async {
 Future<bool> routineUpdateCallback() async {
   HeadphonesConnectionCubit? cubit;
   try {
-    if (await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere()) return true;
+    if (await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere()) {
+      // The UI isolate must not post notifications itself: the native call can
+      // briefly block the Flutter frame. Use the one-off background task and
+      // the latest value saved by the UI listener instead.
+      await checkStoredCaseBatteryNotification();
+      return true;
+    }
     cubit = di.getHeadphonesCubit();
     final headphones = await cubit.stream
         .debounceTime(const Duration(seconds: 1))

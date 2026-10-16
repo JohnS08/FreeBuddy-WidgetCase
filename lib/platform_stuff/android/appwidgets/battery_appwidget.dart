@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../cubit/headphones_cubit_objects.dart';
 import '../../../headphones/framework/lrc_battery.dart';
 import '../../../logger.dart';
-import '../background/periodic.dart' as android_periodic;
 
 // no better idea for this yet - that's fine
 StreamSubscription<LRCBatteryLevels>? _headphonesBatteryStreamSub;
@@ -28,7 +27,6 @@ void batteryHomeWidgetHearBloc(BuildContext context,
             .listen((event) async {
       logg.d("Updating widget from UI listener: $event");
       await updateBatteryHomeWidget(event);
-      await android_periodic.checkStoredCaseBatteryNotification();
     });
   }
 }
