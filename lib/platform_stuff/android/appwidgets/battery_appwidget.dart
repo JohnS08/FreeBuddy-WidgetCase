@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:home_widget/home_widget.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../cubit/headphones_cubit_objects.dart';
 import '../../../headphones/framework/lrc_battery.dart';
@@ -32,6 +33,9 @@ void batteryHomeWidgetHearBloc(BuildContext context,
 
 // this is separate so we can use it from f.e. background stuff
 Future<void> updateBatteryHomeWidget(LRCBatteryLevels batteryData) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setInt('case_last_level', batteryData.levelCase ?? -1);
+  await prefs.setBool('case_last_charging', batteryData.chargingCase);
   await HomeWidget.saveWidgetData<int?>('left', batteryData.levelLeft);
   await HomeWidget.saveWidgetData<int?>('right', batteryData.levelRight);
   await HomeWidget.saveWidgetData<int?>('case', batteryData.levelCase);

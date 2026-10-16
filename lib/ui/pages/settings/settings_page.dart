@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
 
+import '../../../platform_stuff/android/background/periodic.dart';
 import '../../app_settings.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -43,8 +44,12 @@ class SettingsPage extends StatelessWidget {
                               divisions: 9,
                               value: threshold.toDouble(),
                               label: '$threshold%',
-                              onChanged: (value) => settings
-                                  .setCaseBatteryThreshold(value.round()),
+                              onChanged: (value) async {
+                                await settings.setCaseBatteryThreshold(
+                                  value.round(),
+                                );
+                                await checkStoredCaseBatteryNotification();
+                              },
                             ),
                           ),
                           SizedBox(

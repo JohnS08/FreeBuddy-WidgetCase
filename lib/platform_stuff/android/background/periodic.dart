@@ -18,6 +18,8 @@ const commonTimeout = Duration(seconds: 10);
 const taskIdRoutineUpdate = 'freebuddy.routine_update';
 const defaultCaseBatteryThreshold = 20;
 const caseBatteryThresholdPreferenceKey = 'caseBatteryThreshold';
+const lastCaseLevelKey = 'case_last_level';
+const lastCaseChargingKey = 'case_last_charging';
 const notificationChannelId = 'case_battery_low';
 
 final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
@@ -35,9 +37,11 @@ Future<void> initNotifications() async {
   ));
 }
 
-Future<void> _checkLowCaseBattery(LRCBatteryLevels batteryData) async {
-  final level = batteryData.levelCase;
-  if (level == null || batteryData.chargingCase) return;
+Future<void> _checkLowCaseBattery({
+  required int? level,
+  required bool charging,
+}) async {
+  if (level == null || charging) return;
   final prefs = await SharedPreferences.getInstance();
   final threshold = prefs.getInt(caseBatteryThresholdPreferenceKey) ??
       defaultCaseBatteryThreshold;
@@ -69,6 +73,18 @@ Future<void> _checkLowCaseBattery(LRCBatteryLevels batteryData) async {
   }
 }
 
+/// Re-check the latest value immediately after the threshold changes.
+Future<void> checkStoredCaseBatteryNotification() async {
+  final prefs = await SharedPreferences.getInstance();
+  final storedLevel = prefs.getInt(lastCaseLevelKey);
+  if (storedLevel == null || storedLevel < 0) return;
+  await initNotifications();
+  await _checkLowCaseBattery(
+    level: storedLevel,
+    charging: prefs.getBool(lastCaseChargingKey) ?? false,
+  );
+}
+
 Future<bool> routineUpdateCallback() async {
   HeadphonesConnectionCubit? cubit;
   try {
@@ -81,7 +97,10 @@ Future<bool> routineUpdateCallback() async {
     if (headphones is! HeadphonesConnectedOpen || headphones.headphones is! LRCBattery) return true;
     final batteryData = await (headphones.headphones as LRCBattery).lrcBattery.first.timeout(commonTimeout);
     await updateBatteryHomeWidget(batteryData);
-    await _checkLowCaseBattery(batteryData);
+    await _checkLowCaseBattery(
+      level: batteryData.levelCase,
+      charging: batteryData.chargingCase,
+    );
     await cubit.close();
     return true;
   } catch (e) {
