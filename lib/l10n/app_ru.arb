@@ -51,6 +51,7 @@
   "privacyPolicyText": "Приложение не собирает персональные данные: адреса электронной почты, идентификаторы и другую информацию. FreeBuddy также не использует Google Analytics и другие сервисы для сбора данных.",
   "privacyPolicyUrl": "https://the.lastgimbus.com/privacy-policy/freebuddy/",
   "pageAboutTitle": "О приложении",
+  "appVersion": "Версия",
   "pageAboutMeHeader": "О приложении и авторе",
   "pageAboutMeBio": "FreeBuddy создан как свободная альтернатива официальным приложениям для наушников.",
   "pageAboutMeAnyQuestions": "Вопросы и предложения можно отправить автору через указанные ниже каналы.",

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutPage extends StatelessWidget {
@@ -47,6 +48,18 @@ class AboutPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           children: [
             Center(child: Text(l.pageAboutMeHeader, style: tt.headlineLarge)),
+            smallSpace(),
+            FutureBuilder<PackageInfo>(
+              future: PackageInfo.fromPlatform(),
+              builder: (context, snapshot) => Center(
+                child: Text(
+                  snapshot.hasData
+                      ? '${l.appVersion}: ${snapshot.data!.version}+${snapshot.data!.buildNumber}'
+                      : '${l.appVersion}: …',
+                  style: tt.bodyMedium,
+                ),
+              ),
+            ),
             smallSpace(),
             Text(l.pageAboutMeBio),
             smallSpace(),
