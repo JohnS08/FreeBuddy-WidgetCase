@@ -190,10 +190,14 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
           hp.device.isConnected.listen((connected) {
             if (connected) {
               if (_connection != null || _connectInProgress) return;
-              // RFCOMM connect() is synchronous in the Bluetooth plugin. Do
-              // not invoke it from the device stream callback; the explicit
-              // UI action starts the attempt instead.
-              emit(HeadphonesConnectedClosed(hp.match!.placeholder));
+              // Start outside the Bluetooth callback. This removes the
+              // repetitive "connected, but not to FreeBuddy" screen on app
+              // startup while avoiding a synchronous RFCOMM call in the
+              // callback itself.
+              Future<void>.delayed(
+                Duration.zero,
+                () => _connect(hp.device, hp.match!),
+              );
             } else {
             _connection?.sink.close();
             _connection = null;
