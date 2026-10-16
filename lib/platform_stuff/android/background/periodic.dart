@@ -100,7 +100,11 @@ Future<bool> routineUpdateCallback() async {
         .debounceTime(const Duration(seconds: 1))
         .firstWhere((e) => e is! HeadphonesConnecting)
         .timeout(commonTimeout);
-    if (headphones is! HeadphonesConnectedOpen || headphones.headphones is! LRCBattery) return true;
+    if (headphones is! HeadphonesConnectedOpen || headphones.headphones is! LRCBattery) {
+      await checkStoredCaseBatteryNotification();
+      await cubit.close();
+      return true;
+    }
     final batteryData = await (headphones.headphones as LRCBattery).lrcBattery.first.timeout(commonTimeout);
     await updateBatteryHomeWidget(batteryData);
     await _checkLowCaseBattery(
@@ -125,9 +129,17 @@ void callbackDispatcher() {
         taskIdRoutineUpdate => await routineUpdateCallback().timeout(commonTimeout),
         String() => throw Exception('No such task named $task'),
       };
-    } catch (e, s) {
-      loggI.e('Periodic task $task failed', error: e, stackTrace: s);
-      return false;
+  } catch (e, s) {
+    loggI.e('Periodic task $task failed', error: e, stackTrace: s);
+    // A killed or unavailable Bluetooth session must not suppress the alert.
+    // Use the last value saved by the widget as a fallback for this poll.
+    try {
+      await checkStoredCaseBatteryNotification();
+    } catch (fallbackError, fallbackStack) {
+      loggI.e('Stored battery fallback failed',
+          error: fallbackError, stackTrace: fallbackStack);
+    }
+    return false;
     }
   });
 }

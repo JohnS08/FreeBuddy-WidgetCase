@@ -54,7 +54,7 @@ class CaseBatteryWidget : GlanceAppWidget() {
                 .padding(6.dp),
             contentAlignment = Alignment.Center,
         ) {
-            Row(
+            Column(
                 modifier = GlanceModifier.fillMaxSize(),
                 verticalAlignment = Alignment.Vertical.CenterVertically,
                 horizontalAlignment = Alignment.Horizontal.CenterHorizontally,
@@ -65,7 +65,7 @@ class CaseBatteryWidget : GlanceAppWidget() {
                     modifier = GlanceModifier.size(if (size.width <= COMPACT.width) 24.dp else 28.dp),
                     colorFilter = ColorFilter.tint(GlanceTheme.colors.primary),
                 )
-                Spacer(modifier = GlanceModifier.width(4.dp))
+                Spacer(modifier = GlanceModifier.height(2.dp))
                 Text(
                     text = when {
                         level < 0 -> "—"
