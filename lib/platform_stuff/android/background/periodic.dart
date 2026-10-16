@@ -20,7 +20,7 @@ const defaultCaseBatteryThreshold = 20;
 const caseBatteryThresholdPreferenceKey = 'caseBatteryThreshold';
 const lastCaseLevelKey = 'case_last_level';
 const lastCaseChargingKey = 'case_last_charging';
-const notificationChannelId = 'case_battery_low_v2';
+const notificationChannelId = 'case_battery_low_v3';
 
 final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
 
@@ -33,7 +33,9 @@ Future<void> initNotifications() async {
     notificationChannelId,
     'Заряд кейса',
     description: 'Уведомления о низком заряде кейса FreeBuds',
-    importance: Importance.low,
+    importance: Importance.high,
+    playSound: true,
+    enableVibration: true,
   ));
 }
 
@@ -54,9 +56,13 @@ Future<void> _checkLowCaseBattery({
         notificationChannelId,
         'Заряд кейса',
         channelDescription: 'Уведомления о низком заряде кейса FreeBuds',
-        importance: Importance.defaultImportance,
-        priority: Priority.defaultPriority,
+        importance: Importance.high,
+        priority: Priority.high,
         icon: '@mipmap/ic_launcher',
+        playSound: true,
+        enableVibration: true,
+        category: AndroidNotificationCategory.message,
+        visibility: NotificationVisibility.public,
       )),
     );
   }
