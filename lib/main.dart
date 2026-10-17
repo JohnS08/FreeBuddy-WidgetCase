@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:provider/provider.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
@@ -14,6 +15,7 @@ import 'cubit/headphones_cubit_objects.dart';
 import 'di.dart' as di;
 import 'platform_stuff/android/appwidgets/battery_appwidget.dart';
 import 'platform_stuff/android/background/periodic.dart' as android_periodic;
+import 'platform_stuff/android/background/foreground_service.dart';
 import 'ui/app_settings.dart';
 import 'ui/pages/about/about_page.dart';
 import 'ui/pages/headphones_settings/headphones_settings_page.dart';
@@ -22,14 +24,15 @@ import 'ui/pages/introduction/introduction.dart';
 import 'ui/pages/settings/settings_page.dart';
 import 'ui/theme/themes.dart';
 
-void main() {
+Future<void> main() async {
   final bind = WidgetsFlutterBinding.ensureInitialized();
+  FlutterForegroundTask.initCommunicationPort();
   // This is so that we try to connect to headphones under splash screen
   // This will make it more smooth to the user
   FlutterNativeSplash.preserve(widgetsBinding: bind);
   if (!kIsWeb && Platform.isAndroid) {
-    // this is async, so it won't block runApp
-    android_periodic.init();
+    await android_periodic.init();
+    await initForegroundService();
   }
   runApp(const MyAppWrapper());
 }
