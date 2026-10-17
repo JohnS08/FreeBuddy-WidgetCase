@@ -24,17 +24,26 @@ import 'ui/pages/introduction/introduction.dart';
 import 'ui/pages/settings/settings_page.dart';
 import 'ui/theme/themes.dart';
 
-Future<void> main() async {
+void main() {
   final bind = WidgetsFlutterBinding.ensureInitialized();
   FlutterForegroundTask.initCommunicationPort();
   // This is so that we try to connect to headphones under splash screen
   // This will make it more smooth to the user
   FlutterNativeSplash.preserve(widgetsBinding: bind);
-  if (!kIsWeb && Platform.isAndroid) {
-    await android_periodic.init();
-    await initForegroundService();
-  }
   runApp(const MyAppWrapper());
+
+  if (!kIsWeb && Platform.isAndroid) {
+    // Do not block the first Flutter frame on WorkManager, notification
+    // permission dialogs, or foreground-service startup.
+    Future<void>.delayed(Duration.zero, () async {
+      try {
+        await android_periodic.init();
+        await initForegroundService();
+      } catch (error, stackTrace) {
+        debugPrint('Background service startup failed: $error\n$stackTrace');
+      }
+    });
+  }
 }
 
 // Big ass ugly-as-fuck wrapper because:
