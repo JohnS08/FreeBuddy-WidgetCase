@@ -1,5 +1,6 @@
 /// Background work for occasional case-battery refreshes and notifications.
 
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -20,6 +21,7 @@ const defaultCaseBatteryThreshold = 20;
 const caseBatteryThresholdPreferenceKey = 'caseBatteryThreshold';
 const lastCaseLevelKey = 'case_last_level';
 const lastCaseChargingKey = 'case_last_charging';
+const appInForegroundKey = 'app_in_foreground';
 const notificationChannelId = 'case_battery_low_v3';
 
 final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
@@ -33,7 +35,6 @@ Future<void> _initNotifications() async {
   const android = AndroidInitializationSettings('@mipmap/ic_launcher');
   await _notifications.initialize(const InitializationSettings(android: android));
   final androidPlugin = _notifications.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
-  await androidPlugin?.requestNotificationsPermission();
   await androidPlugin?.createNotificationChannel(const AndroidNotificationChannel(
     notificationChannelId,
     'Заряд кейса',
@@ -42,6 +43,20 @@ Future<void> _initNotifications() async {
     playSound: true,
     enableVibration: true,
   ));
+}
+
+/// Android permission dialogs must only be requested from the foreground UI.
+/// Background isolates call [initNotifications] but never this function.
+Future<void> requestNotificationPermissionFromUi() async {
+  await initNotifications();
+  final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>();
+  await androidPlugin?.requestNotificationsPermission();
+}
+
+Future<void> setAppInForeground(bool value) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool(appInForegroundKey, value);
 }
 
 Future<void> _checkLowCaseBattery({
@@ -85,21 +100,47 @@ Future<void> checkStoredCaseBatteryNotification() async {
   );
 }
 
-Future<bool> routineUpdateCallback() async {
+bool _pollInProgress = false;
+
+/// Performs one real Bluetooth poll and persists the case level.
+///
+/// When the activity is paused, a background isolate cannot read fresh values
+/// from the UI cubit, so it replaces that cubit deliberately. [force] is kept
+/// for explicit callers that need the same takeover regardless of lifecycle.
+Future<bool> routineUpdateCallback({bool force = false}) async {
+  if (_pollInProgress) return true;
+  _pollInProgress = true;
   HeadphonesConnectionCubit? cubit;
   try {
-    if (await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere()) {
+    final prefs = await SharedPreferences.getInstance();
+    final uiIsActive = prefs.getBool(appInForegroundKey) ?? true;
+    final cubitIsAlive =
+        await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere();
+    if (!force && cubitIsAlive && uiIsActive) {
       // The UI isolate must not post notifications itself: the native call can
       // briefly block the Flutter frame. Use the one-off background task and
       // the latest value saved by the UI listener instead.
       await checkStoredCaseBatteryNotification();
       return true;
     }
+    if ((force || !uiIsActive) && cubitIsAlive) {
+      await HeadphonesConnectionCubit.killOtherCubit();
+    }
     cubit = di.getHeadphonesCubit();
-    final headphones = await cubit.stream
+    var headphones = await cubit.stream
         .debounceTime(const Duration(seconds: 1))
         .firstWhere((e) => e is! HeadphonesConnecting)
         .timeout(commonTimeout);
+    if (headphones is HeadphonesConnectedClosed) {
+      // connect() waits for the RFCOMM stream to close, so start it without
+      // awaiting the whole lifetime of the connection. The background poll
+      // only needs the ConnectedOpen transition and the first battery reply.
+      final openState = cubit.stream
+          .firstWhere((e) => e is HeadphonesConnectedOpen)
+          .timeout(commonTimeout);
+      unawaited(cubit.connect());
+      headphones = await openState;
+    }
     if (headphones is! HeadphonesConnectedOpen || headphones.headphones is! LRCBattery) {
       await checkStoredCaseBatteryNotification();
       await cubit.close();
@@ -116,6 +157,8 @@ Future<bool> routineUpdateCallback() async {
   } catch (e) {
     await cubit?.close();
     rethrow;
+  } finally {
+    _pollInProgress = false;
   }
 }
 
@@ -126,7 +169,8 @@ void callbackDispatcher() {
     await initNotifications();
     try {
       return switch (task) {
-        taskIdRoutineUpdate => await routineUpdateCallback().timeout(commonTimeout),
+        taskIdRoutineUpdate =>
+            await routineUpdateCallback().timeout(commonTimeout),
         String() => throw Exception('No such task named $task'),
       };
   } catch (e, s) {

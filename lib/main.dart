@@ -38,6 +38,7 @@ void main() {
     Future<void>.delayed(Duration.zero, () async {
       try {
         await android_periodic.init();
+        await android_periodic.requestNotificationPermissionFromUi();
         await initForegroundService();
       } catch (error, stackTrace) {
         debugPrint('Background service startup failed: $error\n$stackTrace');
@@ -62,6 +63,9 @@ class _MyAppWrapperState extends State<MyAppWrapper>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+    if (!kIsWeb && Platform.isAndroid) {
+      android_periodic.setAppInForeground(true);
+    }
     // ...and this removes splash if we either connected or 1 second passed
     _btBlock.stream
         .firstWhere((e) => e is HeadphonesConnectedOpen)
@@ -96,6 +100,14 @@ class _MyAppWrapperState extends State<MyAppWrapper>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (!kIsWeb && Platform.isAndroid) {
+      if (state == AppLifecycleState.resumed ||
+          state == AppLifecycleState.paused ||
+          state == AppLifecycleState.detached) {
+        await android_periodic.setAppInForeground(
+            state == AppLifecycleState.resumed);
+      }
+    }
     if (state == AppLifecycleState.detached) {
       await _btBlock.close();
     }

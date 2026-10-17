@@ -1,18 +1,46 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
+
+import '../../../logger.dart';
+import 'periodic.dart' as periodic;
 
 const _serviceId = 43929;
 
 @pragma('vm:entry-point')
 void foregroundTaskCallback() {
+  DartPluginRegistrant.ensureInitialized();
   FlutterForegroundTask.setTaskHandler(_FreeBuddyTaskHandler());
 }
 
 class _FreeBuddyTaskHandler extends TaskHandler {
   @override
-  Future<void> onStart(DateTime timestamp, TaskStarter starter) async {}
+  Future<void> onStart(DateTime timestamp, TaskStarter starter) async {
+    await periodic.initNotifications();
+    await _poll();
+  }
 
   @override
-  void onRepeatEvent(DateTime timestamp) {}
+  void onRepeatEvent(DateTime timestamp) {
+    unawaited(_poll());
+  }
+
+  Future<void> _poll() async {
+    try {
+      await periodic.routineUpdateCallback()
+          .timeout(periodic.commonTimeout);
+    } catch (error, stackTrace) {
+      loggI.w('Foreground battery poll failed',
+          error: error, stackTrace: stackTrace);
+      try {
+        await periodic.checkStoredCaseBatteryNotification();
+      } catch (fallbackError, fallbackStack) {
+        loggI.w('Foreground stored-value fallback failed',
+            error: fallbackError, stackTrace: fallbackStack);
+      }
+    }
+  }
 
   @override
   Future<void> onDestroy(DateTime timestamp, bool isTimeout) async {}
