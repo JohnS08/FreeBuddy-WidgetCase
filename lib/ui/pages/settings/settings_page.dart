@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
 
+import '../../../platform_stuff/android/background/foreground_service.dart';
 import '../../../platform_stuff/android/background/periodic.dart';
 import '../../app_settings.dart';
 
@@ -80,6 +81,12 @@ class SettingsPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(l.pageAboutTitle),
             ),
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: requestBackgroundPermissions,
+            icon: const Icon(Icons.battery_saver),
+            label: Text(l.backgroundServicePermission),
           ),
         ],
       ),

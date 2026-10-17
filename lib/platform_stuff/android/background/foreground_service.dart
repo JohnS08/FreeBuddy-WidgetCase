@@ -33,16 +33,6 @@ class _FreeBuddyTaskHandler extends TaskHandler {
 }
 
 Future<void> initForegroundService() async {
-  final notificationPermission =
-      await FlutterForegroundTask.checkNotificationPermission();
-  if (notificationPermission != NotificationPermission.granted) {
-    await FlutterForegroundTask.requestNotificationPermission();
-  }
-
-  if (!await FlutterForegroundTask.isIgnoringBatteryOptimizations) {
-    await FlutterForegroundTask.requestIgnoreBatteryOptimization();
-  }
-
   FlutterForegroundTask.init(
     androidNotificationOptions: AndroidNotificationOptions(
       channelId: 'freebuddy_foreground_service',
@@ -76,4 +66,17 @@ Future<void> initForegroundService() async {
     notificationText: 'Мониторинг заряда кейса включён',
     callback: foregroundTaskCallback,
   );
+}
+
+/// Called from an explicit settings action, not during application startup.
+Future<void> requestBackgroundPermissions() async {
+  final notificationPermission =
+      await FlutterForegroundTask.checkNotificationPermission();
+  if (notificationPermission != NotificationPermission.granted) {
+    await FlutterForegroundTask.requestNotificationPermission();
+  }
+
+  if (!await FlutterForegroundTask.isIgnoringBatteryOptimizations) {
+    await FlutterForegroundTask.requestIgnoreBatteryOptimization();
+  }
 }

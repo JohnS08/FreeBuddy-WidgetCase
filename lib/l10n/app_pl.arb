@@ -56,6 +56,7 @@
   "privacyPolicyText": "Ta aplikacja nie zbiera żadnych informacji o tobie - żadnych emaili, identyfikatorów, lub czegokolwiek takiego na serwerze, bo nawet go nie mam :D\nFreeBuddy nie korzysta też z Google Analytics, czy innego serwisu który zbierałby twoje dane <3",
   "privacyPolicyUrl": "https://the.lastgimbus.com/privacy-policy/freebuddy/",
   "pageAboutTitle": "O aplikacji",
+  "backgroundServicePermission": "Zezwól na działanie w tle",
   "appVersion": "Wersja",
   "pageAboutMeHeader": "O aplikacji i o mnie",
   "pageAboutMeBio": "Heja 👋 Jestem @TheLastGimbus, twórca tej apki 🧑‍💻 Mam nadzieje że cie ona raduje! Stworzyłem ją z czystej pasji 💖",
