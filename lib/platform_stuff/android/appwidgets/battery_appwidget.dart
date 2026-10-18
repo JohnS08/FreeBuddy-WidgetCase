@@ -46,6 +46,8 @@ Future<void> updateBatteryHomeWidget(LRCBatteryLevels batteryData) async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.setInt('case_last_level', batteryData.levelCase ?? -1);
   await prefs.setBool('case_last_charging', batteryData.chargingCase);
+  await prefs.setInt(android_periodic.lastCaseUpdatedAtKey,
+      DateTime.now().millisecondsSinceEpoch);
   await HomeWidget.saveWidgetData<int?>('left', batteryData.levelLeft);
   await HomeWidget.saveWidgetData<int?>('right', batteryData.levelRight);
   await HomeWidget.saveWidgetData<int?>('case', batteryData.levelCase);

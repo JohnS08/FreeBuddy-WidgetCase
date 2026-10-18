@@ -39,6 +39,10 @@ void main() {
       try {
         await android_periodic.init();
         await android_periodic.requestNotificationPermissionFromUi();
+        // Let the UI cubit finish Bluetooth initialization before the service
+        // starts. Starting both cubits in the same frame makes them kill each
+        // other through IsolateNameServer and can freeze the activity.
+        await Future<void>.delayed(const Duration(seconds: 5));
         await initForegroundService();
       } catch (error, stackTrace) {
         debugPrint('Background service startup failed: $error\n$stackTrace');

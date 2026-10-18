@@ -33,12 +33,6 @@ class _FreeBuddyTaskHandler extends TaskHandler {
     } catch (error, stackTrace) {
       loggI.w('Foreground battery poll failed',
           error: error, stackTrace: stackTrace);
-      try {
-        await periodic.checkStoredCaseBatteryNotification();
-      } catch (fallbackError, fallbackStack) {
-        loggI.w('Foreground stored-value fallback failed',
-            error: fallbackError, stackTrace: fallbackStack);
-      }
     }
   }
 

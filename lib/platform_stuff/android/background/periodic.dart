@@ -21,6 +21,7 @@ const defaultCaseBatteryThreshold = 20;
 const caseBatteryThresholdPreferenceKey = 'caseBatteryThreshold';
 const lastCaseLevelKey = 'case_last_level';
 const lastCaseChargingKey = 'case_last_charging';
+const lastCaseUpdatedAtKey = 'case_last_updated_at';
 const appInForegroundKey = 'app_in_foreground';
 const notificationChannelId = 'case_battery_low_v3';
 
@@ -91,6 +92,12 @@ Future<void> _checkLowCaseBattery({
 /// Re-check the latest value immediately after the threshold changes.
 Future<void> checkStoredCaseBatteryNotification() async {
   final prefs = await SharedPreferences.getInstance();
+  final updatedAt = prefs.getInt(lastCaseUpdatedAtKey);
+  if (updatedAt == null ||
+      DateTime.now().millisecondsSinceEpoch - updatedAt >
+          const Duration(minutes: 10).inMilliseconds) {
+    return;
+  }
   final storedLevel = prefs.getInt(lastCaseLevelKey);
   if (storedLevel == null || storedLevel < 0) return;
   await initNotifications();
@@ -104,32 +111,29 @@ bool _pollInProgress = false;
 
 /// Performs one real Bluetooth poll and persists the case level.
 ///
-/// When the activity is paused, a background isolate cannot read fresh values
-/// from the UI cubit, so it replaces that cubit deliberately. [force] is kept
-/// for explicit callers that need the same takeover regardless of lifecycle.
-Future<bool> routineUpdateCallback({bool force = false}) async {
+/// The UI cubit remains the owner while the app process is alive. A background
+/// cubit is created only after the UI cubit has disappeared, for example after
+/// the system recreates the foreground service process.
+Future<bool> routineUpdateCallback() async {
   if (_pollInProgress) return true;
   _pollInProgress = true;
   HeadphonesConnectionCubit? cubit;
   try {
-    final prefs = await SharedPreferences.getInstance();
-    final uiIsActive = prefs.getBool(appInForegroundKey) ?? true;
     final cubitIsAlive =
         await HeadphonesConnectionCubit.cubitAlreadyRunningSomewhere();
-    if (!force && cubitIsAlive && uiIsActive) {
-      // The UI isolate must not post notifications itself: the native call can
-      // briefly block the Flutter frame. Use the one-off background task and
-      // the latest value saved by the UI listener instead.
-      await checkStoredCaseBatteryNotification();
+    if (cubitIsAlive) {
+      // The UI cubit continues receiving Bluetooth events while the activity
+      // is paused. Never kill it from a foreground-task isolate: doing so
+      // leaves the activity with a closed cubit and causes hangs on resume.
       return true;
-    }
-    if ((force || !uiIsActive) && cubitIsAlive) {
-      await HeadphonesConnectionCubit.killOtherCubit();
     }
     cubit = di.getHeadphonesCubit();
     var headphones = await cubit.stream
         .debounceTime(const Duration(seconds: 1))
-        .firstWhere((e) => e is! HeadphonesConnecting)
+        .firstWhere((e) => e is HeadphonesConnectedClosed ||
+            e is HeadphonesConnectedOpen ||
+            e is HeadphonesBluetoothDisabled ||
+            e is HeadphonesNoPermission)
         .timeout(commonTimeout);
     if (headphones is HeadphonesConnectedClosed) {
       // connect() waits for the RFCOMM stream to close, so start it without
@@ -142,8 +146,7 @@ Future<bool> routineUpdateCallback({bool force = false}) async {
       headphones = await openState;
     }
     if (headphones is! HeadphonesConnectedOpen || headphones.headphones is! LRCBattery) {
-      await checkStoredCaseBatteryNotification();
-      await cubit.close();
+      await _closeCubit(cubit);
       return true;
     }
     final batteryData = await (headphones.headphones as LRCBattery).lrcBattery.first.timeout(commonTimeout);
@@ -152,13 +155,23 @@ Future<bool> routineUpdateCallback({bool force = false}) async {
       level: batteryData.levelCase,
       charging: batteryData.chargingCase,
     );
-    await cubit.close();
+    await _closeCubit(cubit);
     return true;
   } catch (e) {
-    await cubit?.close();
+    await _closeCubit(cubit);
     rethrow;
   } finally {
     _pollInProgress = false;
+  }
+}
+
+Future<void> _closeCubit(HeadphonesConnectionCubit? cubit) async {
+  if (cubit == null) return;
+  try {
+    await cubit.close().timeout(const Duration(seconds: 2));
+  } catch (error, stackTrace) {
+    loggI.w('Timed out while closing Bluetooth cubit',
+        error: error, stackTrace: stackTrace);
   }
 }
 
@@ -175,14 +188,6 @@ void callbackDispatcher() {
       };
   } catch (e, s) {
     loggI.e('Periodic task $task failed', error: e, stackTrace: s);
-    // A killed or unavailable Bluetooth session must not suppress the alert.
-    // Use the last value saved by the widget as a fallback for this poll.
-    try {
-      await checkStoredCaseBatteryNotification();
-    } catch (fallbackError, fallbackStack) {
-      loggI.e('Stored battery fallback failed',
-          error: fallbackError, stackTrace: fallbackStack);
-    }
     return false;
     }
   });
