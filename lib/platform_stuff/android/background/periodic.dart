@@ -1,12 +1,10 @@
 /// Background work for occasional case-battery refreshes and notifications.
 
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:workmanager/workmanager.dart';
 
 import '../../../cubit/headphones_connection_cubit.dart';
 import '../../../cubit/headphones_cubit_objects.dart';
@@ -16,7 +14,6 @@ import '../../../logger.dart';
 import '../appwidgets/battery_appwidget.dart';
 
 const commonTimeout = Duration(seconds: 10);
-const taskIdRoutineUpdate = 'freebuddy.routine_update';
 const defaultCaseBatteryThreshold = 20;
 const caseBatteryThresholdPreferenceKey = 'caseBatteryThreshold';
 const lastCaseLevelKey = 'case_last_level';
@@ -175,34 +172,8 @@ Future<void> _closeCubit(HeadphonesConnectionCubit? cubit) async {
   }
 }
 
-@pragma('vm:entry-point')
-void callbackDispatcher() {
-  Workmanager().executeTask((task, inputData) async {
-    DartPluginRegistrant.ensureInitialized();
-    await initNotifications();
-    try {
-      return switch (task) {
-        taskIdRoutineUpdate =>
-            await routineUpdateCallback().timeout(commonTimeout),
-        String() => throw Exception('No such task named $task'),
-      };
-  } catch (e, s) {
-    loggI.e('Periodic task $task failed', error: e, stackTrace: s);
-    return false;
-    }
-  });
-}
-
-/// Bluetooth connection broadcasts trigger an immediate refresh; this is only a low-frequency safety net.
+/// Initializes notification resources. The foreground service is the sole
+/// periodic scheduler; WorkManager is intentionally not initialized here.
 Future<void> init() async {
   await initNotifications();
-  await Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
-  await Workmanager().registerPeriodicTask(
-    taskIdRoutineUpdate,
-    taskIdRoutineUpdate,
-    frequency: const Duration(minutes: 30),
-    initialDelay: const Duration(minutes: 5),
-    existingWorkPolicy: ExistingPeriodicWorkPolicy.update,
-    backoffPolicy: BackoffPolicy.linear,
-  );
 }

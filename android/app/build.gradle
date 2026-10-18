@@ -105,10 +105,4 @@ dependencies {
     implementation "androidx.glance:glance-appwidget:1.1.1"
     implementation "androidx.glance:glance-material3:1.1.1"
 
-    // Keep the runtime aligned with the current Flutter workmanager plugin.
-    // Forcing 2.8.1 caused GeneratedPluginsRegister to fail with:
-    // NoSuchFieldError: WorkManager.Companion
-    def work_version = "2.11.2"
-    implementation "androidx.work:work-runtime:$work_version"
-    implementation "androidx.work:work-runtime-ktx:$work_version"
 }
