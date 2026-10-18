@@ -21,6 +21,8 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
   StreamSubscription? _devStream;
   final Map<BluetoothDevice, StreamSubscription> _watchedKnownDevices = {};
   bool _connectInProgress = false;
+  DateTime? _bluetoothReadyAt;
+  static const _rfcommStartupGuard = Duration(seconds: 8);
   static const connectTries = 3;
   static const killOtherCubitTimeout = Duration(seconds: 3);
   static const _killUrself = "kill urself";
@@ -103,6 +105,12 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
 
   Future<void> connect() async {
     if (_connection != null || _connectInProgress) return;
+    final readyAt = _bluetoothReadyAt;
+    if (readyAt == null ||
+        DateTime.now().difference(readyAt) < _rfcommStartupGuard) {
+      loggI.i('RFCOMM connection postponed while Bluetooth is settling');
+      return;
+    }
     final connected = _watchedKnownDevices.keys
         .firstWhereOrNull((dev) => dev.isConnected.valueOrNull ?? false);
     if (connected != null) {
@@ -291,6 +299,7 @@ class HeadphonesConnectionCubit extends Cubit<HeadphonesConnectionState> {
     // as the background one, and why does it crash/hang when we init it twice
     // ...but that's for another day xdddd
     _bluetooth.init();
+    _bluetoothReadyAt = DateTime.now();
     _btEnabledStream = _bluetooth.isEnabled.listen((enabled) {
       if (!enabled) emit(const HeadphonesBluetoothDisabled());
     });
