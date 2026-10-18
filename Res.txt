@@ -1,263 +1,101 @@
-10-18 11:25:25.869  1923  2739 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.871  1923  2370 V DisplayPowerController[0]: Brightness [0.056147106] reason changing to: 'automatic', previous reason: 'doze'.
-10-18 11:25:25.875  1923  3213 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.885  1923  3213 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.886  3158  3158 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.fod.MiuiGxzwIconView$3@c7c246b
-10-18 11:25:25.903  1923  3613 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.905  3158  3628 D MiuiGxzwAnimView: onDisplayChanged: oldState = 3, newState = 2
-10-18 11:25:25.906  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:25.906  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:25.909  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.910  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:25.910  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:25.913  3158  3158 D miui_face: requestFaceAuth()
-10-18 11:25:25.913  3158  3158 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.fod.MiuiGxzwAnimView$MiuiGxzwAnimViewInternal$2@25da19
-10-18 11:25:25.913  3158  3158 D MiuiBleUnlockHelper: verifyBLEDeviceRssi  isShowing = true isOccluded = false isMXtelcel = false isHiding = true isDeviceInteractive = true
-10-18 11:25:25.914  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.915  3829 14681 W MiuiAodService: stopDozing: 
-10-18 11:25:25.916  3158  3178 I MiuiDozeServiceHost: onDozingRequested: false
-10-18 11:25:25.924  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
-10-18 11:25:25.924  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
-10-18 11:25:25.928 27719 27982 I NearbyDiscovery: (REDACTED) ApFastPairScanner: eventType=%s, intReq=%s, scanning=%s, scanAllowed=%s, bleEnabled=%s, lockScanRate=%s, startScanningByLowPowerMode=%s
-10-18 11:25:25.929  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.934  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.935  3158  3158 I MiuiGxzwManager: stopDozing
-10-18 11:25:25.935  3158  3158 D MiuiGxzwOverlayView: stopDozing
-10-18 11:25:25.935  3158  3158 D MiuiGxzwViewIcon: stopDozing
-10-18 11:25:25.937  2870  4378 D MiuiKeyguardWallpaperRemoteService: onStartedWakingUp
-10-18 11:25:25.938  5779 29294 I PowerCenterProvider: call METHOD_GET_BATTERY_INFO
-10-18 11:25:25.938  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
-10-18 11:25:25.939  1178  1178 D SurfaceFlinger: Setting power mode 2 on display 4630947119594951809
-10-18 11:25:25.941  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.946  5779 29294 I PowerUtils: Device name:toco
-10-18 11:25:25.946  5779 29294 W PowerUtils: should not use this capacity value 5260
-10-18 11:25:25.946  1923  2739 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.947  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
-10-18 11:25:25.948  1923  3339 W ActivityManager: Sending non-protected broadcast zmbzid from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
-10-18 11:25:25.948  1923  3339 W ActivityManager: Sending non-protected broadcast zmbzid from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
-10-18 11:25:25.950  3158  3158 I KeyguardIndicationInjector: handleChargeTextAnimation: false;powerPluggedIn=true
-10-18 11:25:25.951  1923  2107 D ActivityTaskManager: Top Process State changed to PROCESS_STATE_TOP
-10-18 11:25:25.953  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
-10-18 11:25:25.953  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
-10-18 11:25:25.953  2870  2870 I BroadcastBinder: onNotify: com.miui.maml.data.BroadcastBinder@b01bf1e
-10-18 11:25:25.958  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.954  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436018): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
-10-18 11:25:25.954  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436019): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
-10-18 11:25:25.962  1632 14436 W MiuiBooster: "MiuiBoosterService requestCpuHighFreq: 10091, 1, 500"
-10-18 11:25:25.962  1632 14436 W MiuiBooster: "requestCpuHighFreq,final level:1,final timeoutms:500"
-10-18 11:25:25.962  1632 14436 W MiuiBooster: "perf_hint_hc start"
-10-18 11:25:25.962  1632 14436 W MiuiBooster: "big_core_value[level-1]:4095"
-10-18 11:25:25.962  1632 14436 W MiuiBooster: "little_core_value[level-1]:4095"
-10-18 11:25:25.963  1632 14436 W MiuiBooster: "perf_handle:118438"
-10-18 11:25:25.967  1632 14436 W MiuiBooster: "MiuiBoosterService requestCpuHighFreq: 10091, 1, 3000"
-10-18 11:25:25.964  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436020): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
-10-18 11:25:25.964  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436021): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
-10-18 11:25:25.967  1632 14436 W MiuiBooster: "perf_hint_hc start"
-10-18 11:25:25.967  1632 14436 W MiuiBooster: "big_core_value[level-1]:4095"
-10-18 11:25:25.967  1632 14436 W MiuiBooster: "little_core_value[level-1]:4095"
-10-18 11:25:25.967  1923  2739 V MiuiActivityTaskManagerServiceEx: dispatchActivityLifeState state = onResume
-10-18 11:25:25.967  1923  2739 V MiuiActivityTaskManagerServiceEx: dispatchActivityLifeState r = ActivityRecord{68f87fa u0 com.miui.home/.launcher.Launcher t2}
-10-18 11:25:25.968  1632 14436 W MiuiBooster: "perf_handle:118439"
-10-18 11:25:25.972  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10419, uidState = 3
-10-18 11:25:25.972  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10113, uidState = 3
-10-18 11:25:25.972  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10091, uidState = 2
-10-18 11:25:25.973  1178  1178 D SurfaceFlinger: FOD postPowerModeFOD 2
-10-18 11:25:25.973  1178  1178 D SurfaceFlinger: Finished setting power mode 2 on display 4630947119594951809
-10-18 11:25:25.981  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:25.982  1923  2105 I DreamController: Stopping dream: name=ComponentInfo{com.miui.aod/com.miui.aod.doze.DozeService}, isTest=false, canDoze=true, userId=0, reason='finished self'(from 'requested stopDream')
-10-18 11:25:25.986  3829  3873 I com.miui.aod: Explicit concurrent copying GC freed 1191KB AllocSpace bytes, 2(48KB) LOS objects, 75% free, 3717KB/14MB, paused 944us,61us total 50.002ms
-10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeMachine.transitionTo(DozeMachine.java:235)
-10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeMachine.requestState(DozeMachine.java:181)
-10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeMachine.requestState(DozeMachine.java:147)
-10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeService.onDreamingStopped(DozeService.java:218)
-10-18 11:25:26.006  3185  3185 D RecentsImpl: mActivityStateObserver com.miui.home.launcher.Launcher
-10-18 11:25:26.007  3185  3185 W RecentsImpl: onResumed className=com.miui.home.launcher.Launcher   mIsInAnotherPro=false   isKeyguardLocked=true
-10-18 11:25:26.019  3829  3829 I MiuiDozeScreenBrightnessController: unregister sensor listener
-10-18 11:25:26.019  3829  3829 I MiuiDozeScreenBrightnessController: unregister non ui sensor listener
-10-18 11:25:26.019  3829  3829 D WakeLock: longWakeLock : release from:MiuiDozeScreenBrightnessController#transitionTo hold:false
-10-18 11:25:26.019  3829  3829 D WakeLock: longWakeLock : release after:MiuiDozeScreenBrightnessController#transitionTo hold:false
-10-18 11:25:26.032  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:26.034  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:26.044  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.045  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:26.053  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:26.054  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:26.054  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:26.056  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:26.064  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:26.064  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
-10-18 11:25:26.081  3158  3158 I NotifierManager: releaseNotifier:TimeChanged  com.miui.maml.data.DateTimeVariableUpdater@1dcc139
-10-18 11:25:26.081  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$MultiBroadcastNotifier@bb5a0df
-10-18 11:25:26.082  3158  3158 I NotifierManager: releaseNotifier:android.intent.action.BATTERY_CHANGED  com.miui.maml.data.BatteryVariableUpdater@ed3a12c
-10-18 11:25:26.082  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$BroadcastNotifier@d75a98a
-10-18 11:25:26.082  3158  3158 I NotifierManager: releaseNotifier:android.media.VOLUME_CHANGED_ACTION  com.miui.maml.data.VolumeVariableUpdater@f7d6bfb
-10-18 11:25:26.082  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$BroadcastNotifier@c185e71
-10-18 11:25:26.082  3158  3158 I NotifierManager: releaseNotifier:DarkMode  com.miui.maml.data.DarkModeVariableUpdater@f8cd456
-10-18 11:25:26.083  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$DarkModeNotifier@82cccd7
-10-18 11:25:26.140  3158  3628 I MiuiGxzwManager: releaseDrawWackLock
-10-18 11:25:26.144  1923  2155 I ActivityManager: Start proc 2591:com.google.android.cellbroadcastreceiver/u0a360 for broadcast {com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver} caller=android
-10-18 11:25:26.197  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 11
-10-18 11:25:26.209  3158  3158 D MiuiWallpaperClient: onKeyguardShowingChanged false
-10-18 11:25:26.210  2870  4378 D MiuiKeyguardWallpaperRemoteService: onKeyguardShowingChanged  showing = false
-10-18 11:25:26.211  3158  3158 D MiuiFastUnlockController: setWallPaperAsTarget asTarget=false
-10-18 11:25:26.214  1923  5357 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:26.218  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
-10-18 11:25:26.219  1923  3339 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
-10-18 11:25:26.219  1923  3339 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
-10-18 11:25:26.219  1923  2110 D MiuiPaperContrastOverlayStubImpl: papermode:updateTextureEyeCareLevel, texture eyecare enable:true
-10-18 11:25:26.221  3185  3275 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
-10-18 11:25:26.221  3185  3275 W RecentsImpl: adaptToTopActivity   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
-10-18 11:25:26.222  3185  3275 W RecentsImpl: onResumed className=com.miui.home.launcher.Launcher   mIsInAnotherPro=false   isKeyguardLocked=false
-10-18 11:25:26.222  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
-10-18 11:25:26.222  3185  3275 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
-10-18 11:25:26.225  1923  5357 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:26.230  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.236  7999  8131 D PowerKeeper.AppStandby: disable standby chain
-10-18 11:25:26.240  3185  3185 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
-10-18 11:25:26.240  3185  3185 W RecentsImpl: adaptToTopActivity   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
-10-18 11:25:26.241  3185  3185 W RecentsImpl: onResumed className=com.miui.home.launcher.Launcher   mIsInAnotherPro=false   isKeyguardLocked=false
-10-18 11:25:26.241  7999  9528 D NetdExecutor: SND -> {enablemiuistandby disable} this=com.miui.powerkeeper.utils.NetdExecutor@4d599a6
-10-18 11:25:26.244  1923  2818 D MiuiFreeformOneTrackManager: aready bound
-10-18 11:25:26.244  1923  2818 D MiuiFreeFormGestureController: handleFreeFormReceiver intent=Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 }
-10-18 11:25:26.245  5779 27047 I com.miui.appmanager.AppManageUtils: startScan
-10-18 11:25:26.246  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.247  5471  5471 D miui.face.FaceService: lock screen passed
-10-18 11:25:26.250  1923  5357 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
-10-18 11:25:26.252  3158  3158 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.faceunlock.MiuiKeyguardFaceUnlockView$2@a32a1bd
-10-18 11:25:26.253  1923  3213 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
-10-18 11:25:26.253  3185  3275 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
-10-18 11:25:26.265  3158  3158 I MiuiChargeController: dismissChargeAnimation: USER_PRESENT
-10-18 11:25:26.269 11107 11107 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1552 onStartInput(EditorInfo{EditorInfo{packageName=com.miui.home, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=2131361965, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
-10-18 11:25:26.274  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.278  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
-10-18 11:25:26.286  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 3
-10-18 11:25:26.286  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 3
-10-18 11:25:26.290  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.298  5087  5087 I libnfc_nci: [INFO:PowerSwitch.cpp(154)] PowerSwitch::setLevel: level=PS-FULL (1)
-10-18 11:25:26.306  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
-10-18 11:25:26.312  5779  2614 I GameBoosterService: restartGameMode: com.miui.home
-10-18 11:25:26.328  5087  5087 I libnfc_nci: [INFO:PowerSwitch.cpp(258)] PowerSwitch::setModeOn(activated=0x1) : mCurrActivity=0x1
-10-18 11:25:26.329 27719  2498 I NearbySharing: Stopping Fast Init advertisement because we're not scanning in the foreground.
-10-18 11:25:26.331  5087  5902 I libnfc_nci: [INFO:NativeNfcManager.cpp(1152)] nfaDeviceManagementCallback: NFA_DM_SET_POWER_SUB_STATE_EVT; status=0x0
-10-18 11:25:26.334 27719  2498 I NearbySharing: Stopping advertising because no high power receive surface is registered and device is visible to HIDDEN.
-10-18 11:25:26.335  3158  3158 I MiuiGxzwManager: nofifySurfaceFlinger: statusbarShow = true
-10-18 11:25:26.340  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.356  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.358  1923  3339 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73))
-10-18 11:25:26.366  1923  4478 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73))
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: startScan error
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: java.lang.NoSuchMethodException: android.net.wifi.IWifiManager$Stub$Proxy.startScan [class java.lang.String]
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.lang.Class.getMethod(Class.java:2941)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.lang.Class.getDeclaredMethod(Class.java:2920)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at sf.e.d(SourceFile:4)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at com.miui.appmanager.AppManageUtils.E0(SourceFile:88)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at f3.b$a.a(SourceFile:29)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at f3.b$a.doInBackground(SourceFile:2)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at android.os.AsyncTask$3.call(AsyncTask.java:394)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.lang.Thread.run(Thread.java:1571)
-10-18 11:25:26.374  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:26.405  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
-10-18 11:25:26.405  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
-10-18 11:25:26.425  1923  1923 D MiuiWifiService: receive BroadcastReceiver action = : android.intent.action.USER_PRESENT, mIsWifiEnabled = : false, mIsWifiAutoDisabled = : false, mIsWifiWakeupEnabled = : false
-10-18 11:25:26.426 27719  2498 I NearbyMediums: Started BLE scanning, service-id=NearbySharing, is-extended-advert=true, power-level=2, scan-mode=3
-10-18 11:25:26.464  5779  5779 I PowerSaveService: onReceive: android.intent.action.SCREEN_ON
-10-18 11:25:26.464  5779  7741 D PowerNoticeUI: ScreenOnEvent
-10-18 11:25:26.471  2591  2591 D nativeloader: Load libforcedarkimpl.so using system ns (caller=/system/framework/miui-framework.jar): ok
-10-18 11:25:26.471  2591  2591 I MiuiForceDarkConfig: setConfig density:2.750000, mainRule:0, secondaryRule:0, tertiaryRule:0
-10-18 11:25:26.477  7999  8195 D LS-ForegroundStatusManager: onScreenChanged screenOn = true, mWorking = false
-10-18 11:25:26.478  7999  8122 E CpuruntimeResource: getPkgRuntimeInfo exception: /proc/package/pkg/show_fb_showall: open failed: EACCES (Permission denied)
-10-18 11:25:26.502  3433  3433 D MiuiScanManagerV2: Screen On
-10-18 11:25:26.506  3433  3433 D MiuiScanManager: Screen On
-10-18 11:25:26.508  3433  3433 D MiuiBT-PluginUpdatedReceiver: PluginUpdatedReceiver receive action: android.intent.action.SCREEN_ON
-10-18 11:25:26.508  3433  3433 I MiuiBT-PluginUpdatedReceiver: ACTION_SCREEN_ON current_time = 1792311926508 mLastDownloadTime = 1790333925239
-10-18 11:25:26.529  1923  3339 I ActivityManager: Killing 32566:com.milink.runtime/u0a139 (adj 985): empty #17
-10-18 11:25:26.532  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 19
-10-18 11:25:26.540  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 11
-10-18 11:25:26.546  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 19
-10-18 11:25:26.579  1923  3339 D ActivityManagerServiceImpl: Service controller is not enabled.
-10-18 11:25:26.580  1923  2107 D MiuiCarService: process died uid= 10139
-10-18 11:25:26.580  1923  2107 D MiuiCarService: mCurrentState.get() != MiuiCarManager.CASTING_STATE_STARTED
-10-18 11:25:26.610 27719 27982 I NearbyDiscovery: (REDACTED) ApFastPairScanner: eventType=%s, intReq=%s, scanning=%s, scanAllowed=%s, bleEnabled=%s, lockScanRate=%s, startScanningByLowPowerMode=%s
-10-18 11:25:26.622  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 90000, uidState = 11
-10-18 11:25:26.622  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10032, uidState = 11
-10-18 11:25:26.627  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 90000, uidState = 17
-10-18 11:25:26.628  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10032, uidState = 16
-10-18 11:25:26.633  1923  4991 W BroadcastQueue: Skipping deliver [foreground] BroadcastRecord{f6d36a7 u-1 android.intent.action.SCREEN_ON} to ReceiverList{c703c54 32566 com.milink.runtime/10139/u0 remote:cd48fa7}: process gone or crashing
-10-18 11:25:26.637  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10074, uidState = 11
-10-18 11:25:26.640  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10074, uidState = 19
-10-18 11:25:27.607  3433  7966 D MiuiNearbyService: setAppConfig
-10-18 11:25:27.608  3433  7966 D MiuiNearbyService: setAppConfig : android.uid.system:1000 com.xiaomi.mi_connect_service android.bluetooth.action.BACKGROUND_SCANNING
-10-18 11:25:27.609  3433  7966 V MiuiAppCertUtil: checkPermission call from uid/pid 1000/15225
-10-18 11:25:27.629  6418 15635 D ProcessObserverV10: onForegroundServicesChanged:pid = 15225,uid=1000,serviceTypes=49
-10-18 11:25:27.629  1923  2107 D MediaProjectionManagerServiceStubImpl: handleForegroundServicesChanged
-10-18 11:25:27.637  1923  2107 D MediaProjectionManagerServiceStubImpl: handleForegroundServicesChanged
-10-18 11:25:27.637  6418 15635 D ProcessObserverV10: onForegroundServicesChanged:pid = 15225,uid=1000,serviceTypes=0
-10-18 11:25:27.887  1923  2564 D MIUIInput: [MotionEvent] publisher action=0x0, 1008951691, channel '99a8d06 StatusBar (server)'
-10-18 11:25:27.944  1923  4991 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
-10-18 11:25:27.944  1923  4991 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
-10-18 11:25:27.955  1923  4991 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
-10-18 11:25:27.958  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:27.960  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
-10-18 11:25:27.963  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
-10-18 11:25:27.965  1923  4478 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:27.970  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:27.976  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:27.978  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
-10-18 11:25:27.991  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.008  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.024  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.027  1923  2564 D MIUIInput: [MotionEvent] publisher action=0x1, 1008951830, channel '99a8d06 StatusBar (server)'
-10-18 11:25:28.040  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.057  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.073  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.090  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.106  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.123  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:28.147  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
-10-18 11:25:32.766  5087  5087 D NfcService: Received android.intent.action.BATTERY_CHANGED
-10-18 11:25:32.767  5779  5779 I PowerUtils: getSurfaceTemprature temp: 37
-10-18 11:25:32.767  5779  5779 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
-10-18 11:25:32.768  5779  5779 I PowerNoticeUI: handleBatteryChanged oldPlugType 2 mPlugType 2 oldBatteryLevel 64 mBatteryLevel 64 temperature 361
-10-18 11:25:32.769  5779  5779 I ChargerBatteryIntelligenceReceiver: onBatteryChanged temperature：36,plugType:2
-10-18 11:25:32.770  7999  8298 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 64, status = 2, level = 64, plug = 2, scale = 100
-10-18 11:25:32.770  7999  8118 D PowerKeeper.Thermal: mBatteryTemperature: 36
-10-18 11:25:37.778  1923  4626 W ProcessStats: Tracking association SourceState{7f53b2c com.android.systemui/1000 BTopFgs #2106044} whose proc state 2 is better than process ProcessState{e545b95 com.miui.notification:remote/1000 pkg=com.miui.notification} proc state 3 (1147 skipped)
-10-18 11:25:37.797  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10482, uidState = 10
-10-18 11:25:37.797  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10242, uidState = 10
-10-18 11:25:40.918  5087  5087 D NfcService: Received android.intent.action.BATTERY_CHANGED
-10-18 11:25:40.919  7999  8298 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 64, status = 2, level = 64, plug = 2, scale = 100
-10-18 11:25:40.919  5779  5779 I PowerUtils: getSurfaceTemprature temp: 37
-10-18 11:25:40.920  7999  8118 D PowerKeeper.Thermal: mBatteryTemperature: 36
-10-18 11:25:40.920  5779  5779 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
-10-18 11:25:40.920  5779  5779 I PowerNoticeUI: handleBatteryChanged oldPlugType 2 mPlugType 2 oldBatteryLevel 64 mBatteryLevel 64 temperature 362
-10-18 11:25:40.920  1126  5281 E vendor.xiaomi.hardware.micharge@1.0-service: Failed to open node /sys/class/power_supply/wireless/reverse_chg_mode
-10-18 11:25:40.920  1126  5281 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/wireless/reverse_chg_mode value = 
-10-18 11:25:40.920  5779  5779 I ChargerBatteryIntelligenceReceiver: onBatteryChanged temperature：36,plugType:2
-10-18 11:25:40.923  1126  5281 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/bms/fastcharge_mode value = 0
-10-18 11:25:43.340  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 2
-10-18 11:25:43.366  5010 18835 W MiuiPerfServiceClient: interceptAndQueuing:3158|com.android.systemui|1177|51|1008953119025574|Slow issue draw commands|64
-10-18 11:25:44.356  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 3
-
-
-
-adb shell dumpsys activity services com.lastgimbus.the.freebuddy
-ACTIVITY MANAGER SERVICES (dumpsys activity services)
-  (nothing)
-
-
-
-adb shell dumpsys deviceidle whitelist \
->   | grep com.lastgimbus.the.freebuddy
-user,com.lastgimbus.the.freebuddy,10843
-
+> ~/Desktop/freebuddy-v039-crash-filtered.log | tail -100
+1351:10-18 13:21:03.271  3185 13496 D AppObserver: ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1352:10-18 13:21:03.272  5779 24476 I ProcessMonitor: onForegroundInfoChanged: ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1353:10-18 13:21:03.272  7999  8122 I ThermalInfoCollector: collectForgroundAppsInfo: com.lastgimbus.the.freebuddy
+1354:10-18 13:21:03.273  7999  8122 E CpuruntimeResource: getPkgRuntimeInfo exception: /proc/package/pkg/show_fb_showall: open failed: EACCES (Permission denied)
+1355:10-18 13:21:03.276  7999 20662 D PerfEngineController: ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1356:10-18 13:21:03.277  5779 24476 I GameBoosterService: onForegroundInfoChanged: Cur=com.miui.home	 last=com.lastgimbus.the.freebuddy
+1357:10-18 13:21:03.278  5779 24476 D GameBoosterService: onGameStatusChange foreground:ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1360:10-18 13:21:03.378  3185  3576 E ActivityManagerWrapper: getRecentTasks: taskId=36602   userId=0   baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity }
+1370:10-18 13:21:03.731  1923  2110 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{9adc97c u0 com.lastgimbus.the.freebuddy/.MainActivity t36602}
+1371:10-18 13:21:04.621  1923  3213 D ActivityRecordImpl: Task bounds and snapshot don't match. task width=1080, height=2340: snapshot w=648, h=1404, name = ActivityRecord{9adc97c u0 com.lastgimbus.the.freebuddy/.MainActivity t36602}
+1372:10-18 13:21:04.642  8013  8026 I GST     : forePkg: com.lastgimbus.the.freebuddy, preForePkg: com.miui.home
+1373:10-18 13:21:04.643  3185 13496 D AppObserver: ForegroundInfo{mForegroundPackageName='com.lastgimbus.the.freebuddy', mForegroundUid=10843, mForegroundPid=5329, mLastForegroundPackageName='com.miui.home', mLastForegroundUid=10091, mLastForegroundPid=3185, mMultiWindowForegroundPackageName='com.lastgimbus.the.freebuddy', mMultiWindowForegroundUid=10843, mFlags=0}
+1374:10-18 13:21:04.643  7999  9477 D PerfEngineController: ForegroundInfo{mForegroundPackageName='com.lastgimbus.the.freebuddy', mForegroundUid=10843, mForegroundPid=5329, mLastForegroundPackageName='com.miui.home', mLastForegroundUid=10091, mLastForegroundPid=3185, mMultiWindowForegroundPackageName='com.lastgimbus.the.freebuddy', mMultiWindowForegroundUid=10843, mFlags=0}
+1375:10-18 13:21:04.643  7999  8309 D LS-ForegroundStatusManager: handleMessage ForegroundInfoChanged. pkg = com.lastgimbus.the.freebuddy, uid = 10843, mCurrentForegroundUid = 10091
+1376:10-18 13:21:04.643  7999 20662 D GreenifyCheckerStatsd: onForegroundInfoChanged: com.lastgimbus.the.freebuddy
+1377:10-18 13:21:04.644  6250 31249 D AutoInstallService: onForegroundInfoChanged: com.lastgimbus.the.freebuddy
+1378:10-18 13:21:04.645  7999  8122 E CpuruntimeResource: getPkgRuntimeInfo exception: /proc/package/pkg/show_fb_showall: open failed: EACCES (Permission denied)
+1379:10-18 13:21:04.645  5779  9439 I ProcessMonitor: onForegroundInfoChanged: ForegroundInfo{mForegroundPackageName='com.lastgimbus.the.freebuddy', mForegroundUid=10843, mForegroundPid=5329, mLastForegroundPackageName='com.miui.home', mLastForegroundUid=10091, mLastForegroundPid=3185, mMultiWindowForegroundPackageName='com.lastgimbus.the.freebuddy', mMultiWindowForegroundUid=10843, mFlags=0}
+1380:10-18 13:21:04.646  5779  9439 I GameBoosterService: onForegroundInfoChanged: Cur=com.lastgimbus.the.freebuddy	 last=com.miui.home
+1381:10-18 13:21:04.653  5779  9439 D GameBoosterService: onGameStatusChange foreground:ForegroundInfo{mForegroundPackageName='com.lastgimbus.the.freebuddy', mForegroundUid=10843, mForegroundPid=5329, mLastForegroundPackageName='com.miui.home', mLastForegroundUid=10091, mLastForegroundPid=3185, mMultiWindowForegroundPackageName='com.lastgimbus.the.freebuddy', mMultiWindowForegroundUid=10843, mFlags=0}
+1382:10-18 13:21:04.741  3185  3576 W RecentsModel: getRunningTask   taskInfo=TaskInfo{userId=0 taskId=36602 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity } baseActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} topActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} origActivity=null realActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} numActivities=1 lastActiveTime=1124625465 supportsSplitScreenMultiWindow=true supportsMultiWindow=true resizeMode=1 isResizeable=true token=WCT{android.window.IWindowContainerToken$Stub$Proxy@1527108} topActivityType=1 pictureInPictureParams=PictureInPictureParams( aspectRatio=null sourceRectHint=null hasSetActions=false isAutoPipEnabled=false isSeamlessResizeEnabled=true) displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{2bac0a1 com.lastgimbus.the.freebuddy.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false topActivityInSizeCompat=false locusId= null windowMode=1}
+1383:10-18 13:21:04.741  3185  3576 W RecentsModel: getTaskInfoIgnoreHomeAndFreeform   taskInfo=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity}
+1386:10-18 13:21:04.745  3185  3576 E ActivityManagerWrapper: getRecentTasks: taskId=36602   userId=0   baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity }
+1397:10-18 13:21:07.155  5010  6625 D MIUIScout App: reportAppScoutEvent: AppScoutEvent { mType=APP_SCOUT_HANG mTimeStamp=1792318867151 Pid=5329 Uid=10843 processName=com.lastgimbus.the.freebuddy PackageName=com.lastgimbus.the.freebuddy mTargetActivity= CurrentMsg:{ (Current message: duration=57754ms seq=126 h=android.app.ActivityThread$H c=android.app.LoadedApk$ReceiverDispatcher$Args$$ExternalSyntheticLambda0)} mInputLatency=0}
+1399:10-18 13:21:07.160  1923  5041 W ActivityManagerServiceImpl: java.io.FileNotFoundException: /proc/5329/oom_score_adj: open failed: EACCES (Permission denied)
+1411:10-18 13:21:07.160  1923  5041 W ActivityManagerServiceImpl: Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+1420:10-18 13:21:07.167  5329  5329 I libc    : Requested dump for tid 5329 (s.the.freebuddy)
+1423:10-18 13:21:07.445  5010  6625 D ScoutManager: copyBinderTrace from: [/data/anr/anr_2026-10-18-13-21-07-163], to: [5329-com.lastgimbus.the.freebuddy-APP_SCOUT_HANG-trace-2026-10-18-13-21-07]
+1426:10-18 13:21:09.895  1923  2154 W BroadcastQueue: Receiver during timeout of BroadcastRecord{5253843 u0 android.bluetooth.device.action.ACL_CONNECTED} : ResolveInfo{6441160 com.lastgimbus.the.freebuddy/.BluetoothDeviceConnectedReceiver m=0x108000}
+1431:10-18 13:21:09.975  1923  6651 D ActivityManagerServiceImpl: checkThawTime uid=10843 report=Broadcast of Intent { act=android.bluetooth.device.action.ACL_CONNECTED flg=0x5000010 cmp=com.lastgimbus.the.freebuddy/.BluetoothDeviceConnectedReceiver (has extras) }
+1494:10-18 13:21:10.240 27719  6084 I NearbyShared: java.lang.NoSuchMethodException: android.bluetooth.BluetoothAdapter.registerBluetoothConnectionCallback [interface java.util.concurrent.Executor, class android.bluetooth.BluetoothAdapter$BluetoothConnectionCallback]
+1604:10-18 13:21:14.286  1923  2110 W ActivityTaskManager: Activity stop timeout for ActivityRecord{9adc97c u0 com.lastgimbus.the.freebuddy/.MainActivity t36602}
+1605:10-18 13:21:14.287  1923  2110 I ActivityTaskManager: Activity reported stop, but no longer stopping: ActivityRecord{9adc97c u0 com.lastgimbus.the.freebuddy/.MainActivity t36602} RESUMED
+1643:10-18 13:21:16.178 27719  6084 I NearbyShared: java.lang.NoSuchMethodException: android.bluetooth.BluetoothAdapter.registerBluetoothConnectionCallback [interface java.util.concurrent.Executor, class android.bluetooth.BluetoothAdapter$BluetoothConnectionCallback]
+1711:10-18 13:21:18.615  1923  6651 E ActivityManager: ANR in com.lastgimbus.the.freebuddy
+1713:10-18 13:21:18.615  1923  6651 E ActivityManager: Reason: Broadcast of Intent { act=android.bluetooth.device.action.ACL_CONNECTED flg=0x5000010 cmp=com.lastgimbus.the.freebuddy/.BluetoothDeviceConnectedReceiver (has extras) }
+1739:10-18 13:21:18.615  1923  6651 E ActivityManager:   2.8% 5329/com.lastgimbus.the.freebuddy: 1.8% user + 1% kernel / faults: 2040 minor 197 major
+1919:10-18 13:21:18.635  1923  6651 D ActivityManager: Completed ANR of com.lastgimbus.the.freebuddy in 8739ms, latency 0ms
+1920:10-18 13:21:18.847  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1921:10-18 13:21:18.847  1923  2107 D DecorView[freebuddy]: onWindowFocusChanged hasWindowFocus true
+1922:10-18 13:21:18.861  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1923:10-18 13:21:18.877  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1924:10-18 13:21:18.895  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1925:10-18 13:21:18.911  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1926:10-18 13:21:18.926  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1927:10-18 13:21:18.943  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1928:10-18 13:21:18.960  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1929:10-18 13:21:18.977  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1930:10-18 13:21:18.993  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1931:10-18 13:21:19.012  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1932:10-18 13:21:19.026  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1933:10-18 13:21:19.042  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1940:10-18 13:21:19.058  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1943:10-18 13:21:19.075  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1944:10-18 13:21:19.092  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1945:10-18 13:21:19.108  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1947:10-18 13:21:19.125  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1948:10-18 13:21:19.142  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1977:10-18 13:21:34.751  1923  2564 D MIUIInput: [MotionEvent] publisher action=0x0, 1015912068, channel '24eb077 Application Not Responding: com.lastgimbus.the.freebuddy (server)'
+1978:10-18 13:21:34.812  1923  2564 D MIUIInput: [MotionEvent] publisher action=0x1, 1015912130, channel '24eb077 Application Not Responding: com.lastgimbus.the.freebuddy (server)'
+1979:10-18 13:21:34.823  1923  2107 W ActivityTaskManager:   Force finishing activity com.lastgimbus.the.freebuddy/.MainActivity
+1980:10-18 13:21:34.834  1923  2107 I ActivityManager: Killing 5329:com.lastgimbus.the.freebuddy/u0a843 (adj 0): user request after error
+1981:10-18 13:21:34.845  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1982:10-18 13:21:34.951  1923  4626 I WindowManager: WIN DEATH: Window{c0fd3e0 u0 com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity}
+1983:10-18 13:21:34.951  1923  4626 W InputManager-JNI: Input channel object 'c0fd3e0 com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity (client)' was disposed without first being removed with the input manager!
+1985:10-18 13:21:34.959  1923  2107 D MediaProjectionManagerServiceStubImpl: handleForegroundServicesChanged
+1986:10-18 13:21:34.959  6418  6457 D ProcessObserverV10: onForegroundServicesChanged:pid = 5329,uid=10843,serviceTypes=0
+1987:10-18 13:21:34.960  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1988:10-18 13:21:34.960  1923  5073 I AutoStartManagerService: MIUILOG- Reject RestartService service :ComponentInfo{com.lastgimbus.the.freebuddy/com.pravera.flutter_foreground_task.service.ForegroundService} uid : 10843
+1989:10-18 13:21:34.975  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1991:10-18 13:21:34.992  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+1992:10-18 13:21:34.993 18868 19092 I NotifySyncService_18868_19092: onNotificationRemoved appID:com.lastgimbus.the.freebuddy uid:43929 key:0|com.lastgimbus.the.freebuddy|43929|null|10843  reason:REASON_APP_CANCEL
+1993:10-18 13:21:34.994 18868 19092 I NotifySyncService_18868_19092: removeActionCache packageName:com.lastgimbus.the.freebuddy , action size: null
+1994:10-18 13:21:34.996  3185 26354 D AppObserver: ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1995:10-18 13:21:34.996  7999  9624 D PerfEngineController: ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1996:10-18 13:21:34.996  5779  9439 I ProcessMonitor: onForegroundInfoChanged: ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+1997:10-18 13:21:34.996  8013  8026 I GST     : forePkg: com.miui.home, preForePkg: com.lastgimbus.the.freebuddy
+1998:10-18 13:21:34.997  7999  8122 I ThermalInfoCollector: collectForgroundAppsInfo: com.lastgimbus.the.freebuddy
+1999:10-18 13:21:34.998  7999  8122 E CpuruntimeResource: getPkgRuntimeInfo exception: /proc/package/pkg/show_fb_showall: open failed: EACCES (Permission denied)
+2000:10-18 13:21:34.999  5779  9439 I GameBoosterService: onForegroundInfoChanged: Cur=com.miui.home	 last=com.lastgimbus.the.freebuddy
+2001:10-18 13:21:35.000  5779  9439 D GameBoosterService: onGameStatusChange foreground:ForegroundInfo{mForegroundPackageName='com.miui.home', mForegroundUid=10091, mForegroundPid=3185, mLastForegroundPackageName='com.lastgimbus.the.freebuddy', mLastForegroundUid=10843, mLastForegroundPid=5329, mMultiWindowForegroundPackageName='com.miui.home', mMultiWindowForegroundUid=10091, mFlags=0}
+2003:10-18 13:21:35.004  3158  3391 D PeopleSpaceWidgetMgr: Sbn doesn't contain valid PeopleTileKey: null/0/com.lastgimbus.the.freebuddy
+2004:10-18 13:21:35.018  3185  3275 I Launcher.ApplicationsMessage: update com.lastgimbus.the.freebuddy/ to null
+2005:10-18 13:21:35.025  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+2006:10-18 13:21:35.042  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+2007:10-18 13:21:35.058  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217729 miFodLayer 134217728
+2008:10-18 13:21:35.075  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217730 miFodLayer 134217728
+2009:10-18 13:21:35.084  1923  2107 W InputManager-JNI: Input channel object '24eb077 Application Not Responding: com.lastgimbus.the.freebuddy (client)' was disposed without first being removed with the input manager!
+2010:10-18 13:21:35.094  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2011:10-18 13:21:35.095 18868 19092 I NotifySyncService_18868_19092: BLE remove notifications from  phone size = 1, id = com.lastgimbus.the.freebuddy, key = 0|com.lastgimbus.the.freebuddy|43929|null|10843
+2018:10-18 13:21:35.109  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2019:10-18 13:21:35.124  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2020:10-18 13:21:35.140  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2021:10-18 13:21:35.156  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2022:10-18 13:21:35.194  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2023:10-18 13:21:35.206  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2024:10-18 13:21:35.223  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2027:10-18 13:21:35.239  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2028:10-18 13:21:35.255  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[Application Not Responding: com.lastgimbus.the.freebuddy#0] set Z 134217731 miFodLayer 134217728
+2030:10-18 13:21:35.325  1923  2110 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{9adc97c u0 com.lastgimbus.the.freebuddy/.MainActivity t-1 f}}
