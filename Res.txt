@@ -1,136 +1,263 @@
-﻿ adb logcat -d -v threadtime \
->   | grep -i -E \
-> "freebuddy|ForegroundService|flutter_foreground_task|SecurityException|startForeground|FATAL EXCEPTION|AndroidRuntime|Exception|notification"
-10-17 19:03:52.382  6517  6517 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:am force-stop com.lastgimbus.the.freebuddy'
-10-17 19:03:52.461  1923  2821 I ActivityManager: Force stopping com.lastgimbus.the.freebuddy appid=10843 user=0: from process:11658
-10-17 19:03:52.466  1923  2821 I WindowManager:   Force removing ActivityRecord{d6505e7 u0 com.lastgimbus.the.freebuddy/.MainActivity t36542}
-10-17 19:03:52.511  1923  2821 I ActivityManager: Force stopping com.lastgimbus.the.freebuddy appid=10843 user=999: from process:11658
-10-17 19:04:01.346  1923 15999 I PackageManager: Dexopt with async: com.miui.notification, finished.
-10-17 19:04:05.039  6517  6517 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:monkey -p com.lastgimbus.the.freebuddy 1'
-10-17 19:04:05.452 11760 11760 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-10-17 19:04:05.459 11760 11760 I AndroidRuntime: Using default boot image
-10-17 19:04:05.459 11760 11760 I AndroidRuntime: Leaving lock profiling enabled
-10-17 19:04:06.133  1923 15999 I PackageManager: Dexopt with async: com.qti.qualcomm.datastatusnotification, finished.
-10-17 19:04:06.356 11760 11760 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
-10-17 19:04:06.358 11760 11760 W Monkey  : args: [-p, com.lastgimbus.the.freebuddy, 1]
-10-17 19:04:06.360 11760 11760 W Monkey  :  arg: "com.lastgimbus.the.freebuddy"
-10-17 19:04:06.360 11760 11760 W Monkey  : data="com.lastgimbus.the.freebuddy"
-10-17 19:04:06.585  1923  3689 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity} from uid 2000 from pid 11760 callingPackage com.android.shell
-10-17 19:04:06.682 11760 11760 I AndroidRuntime: VM exiting with result code 0.
-10-17 19:04:06.701  1923  2155 D MiuiProcessPolicyManager: promote com.lastgimbus.the.freebuddy maxAdj to hvy   , maxProcState to + PER 
-10-17 19:04:06.701  1923  2155 I ActivityManager: Start proc 11782:com.lastgimbus.the.freebuddy/u0a843 for top-activity {com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} caller=others
-10-17 19:04:06.756  1923  2784 D ProcessManager: skip notify foregroundAppInfo:ApplicationInfo{da898a0 com.lastgimbus.the.freebuddy}
-10-17 19:04:06.758  5010 26904 W MQSService: CallerName:com.lastgimbus.the.freebuddy,calling Uid:10843
-10-17 19:04:06.759  5010 26904 D MQSService: registerApplicationScoutThread pid = 11782, packageName = com.lastgimbus.the.freebuddy
-10-17 19:04:06.811 11782 11782 D nativeloader: Configuring clns-4 for other apk /data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/lib/arm64:/data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.lastgimbus.the.freebuddy
-10-17 19:04:06.834 11782 11782 V GraphicsEnvironment: ANGLE Developer option for 'com.lastgimbus.the.freebuddy' set to: 'default'
-10-17 19:04:06.837 11782 11782 I ForceDarkHelperStubImpl: initialize for com.lastgimbus.the.freebuddy , ForceDarkOrigin
-10-17 19:04:06.857  1923  4626 D PackageManager: set app  component=com.lastgimbus.the.freebuddy/androidx.work.impl.background.systemjob.SystemJobService enabled state: 1 from null,uid=10843,pid=11782
-10-17 19:04:06.936 11782 11813 D nativeloader: Load /data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk!/lib/arm64-v8a/libflutter.so using class loader ns clns-4 (caller=/data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk): ok
-10-17 19:04:06.966 11782 11782 W s.the.freebuddy: type=1400 audit(0.0:406655): avc: denied { read } for name="max_map_count" dev="proc" ino=37887537 scontext=u:r:untrusted_app:s0:c75,c259,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0
-10-17 19:04:07.023 11782 11816 D vulkan  : searching for layers in '/data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/lib/arm64'
-10-17 19:04:07.023 11782 11816 D vulkan  : searching for layers in '/data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk!/lib/arm64-v8a'
-10-17 19:04:07.255  1923  2110 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{aea64d4 u0 com.lastgimbus.the.freebuddy/.MainActivity t36545}
-10-17 19:04:07.256  1923  2110 W ActivityTaskManager: Activity pause timeout for ActivityRecord{aea64d4 u0 com.lastgimbus.the.freebuddy/.MainActivity t36545}
-10-17 19:04:07.278 11782 11782 D nativeloader: Load /data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk!/lib/arm64-v8a/libdartjni.so using class loader ns clns-4 (caller=/data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk): ok
-10-17 19:04:07.285 11782 11782 E GeneratedPluginsRegister: Received exception while registering
-10-17 19:04:07.285 11782 11782 E GeneratedPluginsRegister: java.lang.reflect.InvocationTargetException
-10-17 19:04:07.285 11782 11782 E GeneratedPluginsRegister: Caused by: java.lang.NoSuchFieldError: No field Companion of type Landroidx/work/WorkManager$Companion; in class Landroidx/work/WorkManager; or its superclasses (declaration of 'androidx.work.WorkManager' appears in /data/app/~~krDVAGiCRLaUUDHEpiA62Q==/com.lastgimbus.the.freebuddy-G0kQh0wMdM5l_RLDGXUgzQ==/base.apk)
-10-17 19:04:07.376  1923  4626 V MiuiActivityTaskManagerServiceEx: dispatchActivityLifeState r = ActivityRecord{aea64d4 u0 com.lastgimbus.the.freebuddy/.MainActivity t36545}
-10-17 19:04:07.379  3185  3185 D RecentsImpl: mActivityStateObserver com.lastgimbus.the.freebuddy.MainActivity
-10-17 19:04:07.380  3185  3576 W RecentsModel: getRunningTask   taskInfo=TaskInfo{userId=0 taskId=36545 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity } baseActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} topActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} origActivity=null realActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} numActivities=1 lastActiveTime=1058808180 supportsSplitScreenMultiWindow=true supportsMultiWindow=true resizeMode=1 isResizeable=true token=WCT{android.window.IWindowContainerToken$Stub$Proxy@a74b6ef} topActivityType=1 pictureInPictureParams=null displayCutoutSafeInsets=Rect(0, 72 - 0, 0) topActivityInfo=ActivityInfo{f48e5fc com.lastgimbus.the.freebuddy.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false topActivityInSizeCompat=false locusId= null windowMode=1}
-10-17 19:04:07.380  3185  3576 W RecentsModel: getTaskInfoIgnoreHomeAndFreeform   taskInfo=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity}
-10-17 19:04:07.380  3185  3185 W RecentsImpl: onResumed className=com.lastgimbus.the.freebuddy.MainActivity   mIsInAnotherPro=false   isKeyguardLocked=true
-10-17 19:04:07.384 11782 11782 W Looper  : PerfMonitor looperActivity : package=com.lastgimbus.the.freebuddy/.MainActivity time=0ms latency=635ms running=0ms  procState=-1  historyMsgCount=3 (msgIndex=2 wall=108ms seq=2 h=android.app.ActivityThread$H w=110) (msgIndex=3 wall=508ms seq=3 h=android.app.ActivityThread$H w=159)
-10-17 19:04:07.385  3185  3576 E ActivityManagerWrapper: getRecentTasks: taskId=36545   userId=0   baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity }
-10-17 19:04:07.398 11782 11782 I flutter : │ #0   TheLastIsolatePrinter.log (package:freebuddy/logger.dart:24)
-10-17 19:04:07.398 11782 11782 I flutter : │ #1   HeadphonesConnectionCubit._init (package:freebuddy/cubit/headphones_connection_cubit.dart:275)
-10-17 19:04:07.429 11782 11782 W Looper  : PerfMonitor looperActivity : package=com.lastgimbus.the.freebuddy/.MainActivity time=1ms latency=672ms running=0ms  procState=-1  historyMsgCount=5 (msgIndex=2 wall=108ms seq=2 h=android.app.ActivityThread$H w=110) (msgIndex=3 wall=508ms seq=3 h=android.app.ActivityThread$H w=159)
-10-17 19:04:07.432 11782 11782 W Looper  : PerfMonitor looperActivity : package=com.lastgimbus.the.freebuddy/.MainActivity time=3ms latency=674ms running=0ms  procState=-1  historyMsgCount=6 (msgIndex=2 wall=108ms seq=2 h=android.app.ActivityThread$H w=110) (msgIndex=3 wall=508ms seq=3 h=android.app.ActivityThread$H w=159)
-10-17 19:04:07.506 11782 11782 I flutter : │ #0   TheLastIsolatePrinter.log (package:freebuddy/logger.dart:24)
-10-17 19:04:07.506 11782 11782 I flutter : │ #1   new HeadphonesConnectionCubit.<anonymous closure> (package:freebuddy/cubit/headphones_connection_cubit.dart:219)
-10-17 19:04:07.733 11782 11782 I flutter : Background service startup failed: PlatformException(channel-error, Unable to establish connection on channel: "dev.flutter.pigeon.workmanager_platform_interface.WorkmanagerHostApi.initialize"., null, null)
-10-17 19:04:07.733 11782 11782 I flutter : #4      init (package:freebuddy/platform_stuff/android/background/periodic.dart:194)
-10-17 19:04:07.733 11782 11782 I flutter : #5      main.<anonymous closure> (package:freebuddy/main.dart:40)
-10-17 19:04:07.824  1923  5038 W InputManager-JNI: Input channel object 'a8f3abe Splash Screen com.lastgimbus.the.freebuddy (client)' was disposed without first being removed with the input manager!
-10-17 19:04:07.849  3185  3576 W RecentsModel: getRunningTask   taskInfo=TaskInfo{userId=0 taskId=36545 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity } baseActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} topActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} origActivity=null realActivity=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity} numActivities=1 lastActiveTime=1058808650 supportsSplitScreenMultiWindow=true supportsMultiWindow=true resizeMode=1 isResizeable=true token=WCT{android.window.IWindowContainerToken$Stub$Proxy@504e485} topActivityType=1 pictureInPictureParams=null displayCutoutSafeInsets=Rect(0, 72 - 0, 0) topActivityInfo=ActivityInfo{49402da com.lastgimbus.the.freebuddy.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false topActivityInSizeCompat=false locusId= null windowMode=1}
-10-17 19:04:07.849  3185  3576 W RecentsModel: getTaskInfoIgnoreHomeAndFreeform   taskInfo=ComponentInfo{com.lastgimbus.the.freebuddy/com.lastgimbus.the.freebuddy.MainActivity}
-10-17 19:04:07.852  3185  3576 E ActivityManagerWrapper: getRecentTasks: taskId=36545   userId=0   baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.lastgimbus.the.freebuddy/.MainActivity }
-10-17 19:04:12.753 11782 11877 D ProfileInstaller: Skipping profile installation for com.lastgimbus.the.freebuddy
-$ 
-$ 
-$ 
-$ adb shell ps -A | grep -i freebuddy
-u0_a843      11782   897 10361120 71112 0                   0 S com.lastgimbus.the.freebuddy
-$ adb shell dumpsys notification --noredact \
->   | grep -i -A10 -B10 \
-> "freebuddy\|FreeBuddy\|Заряд кейса"
-        NotificationChannel{mId='sim_signal_alerts_v2', mName=SIM пульс, mDescription=hasDescription , mImportance=5, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=true, mLightColor=0, mVibration=[0, 250, 250, 250], mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=5, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='chat', mName=Чат поддержки, mDescription=hasDescription , mImportance=5, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=true, mLightColor=0, mVibration=[0, 250, 250, 250], mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=5, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='notification.balance', mName=notification.balance, mDescription=, mImportance=5, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=5, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: com.miui.fmservice (10351)
-        NotificationChannel{mId='channel_id_fm', mName=Служба FM радио, mDescription=, mImportance=2, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=true, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=2, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: com.miui.screenrecorder (1000)
-        NotificationChannel{mId='110', mName=Запись экрана, mDescription=, mImportance=3, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=true, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=true, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=3, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='112', mName=Уведомления о завершенных записях, mDescription=, mImportance=4, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=4, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: ru.rshb.dbo (10028)
-        NotificationChannel{mId='PushPluginChannel', mName=Push-уведомления, mDescription=, mImportance=3, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION_RINGTONE content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=3, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: com.lastgimbus.the.freebuddy (10843)
-        NotificationChannel{mId='case_battery_low', mName=Заряд кейса, mDescription=hasDescription , mImportance=2, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=2, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='case_battery_low_v2', mName=Заряд кейса, mDescription=hasDescription , mImportance=2, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=2, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='case_battery_low_v3', mName=Заряд кейса, mDescription=hasDescription , mImportance=4, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=true, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=4, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: com.miui.fmservice (1000)
-        NotificationChannel{mId='channel_id_fm', mName=Служба FM радио, mDescription=, mImportance=2, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=true, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=-1000, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: com.miui.weather2 (10077)
-        NotificationChannel{mId='weather_alert_channel_id', mName=Оповещения, mDescription=, mImportance=3, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=3, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='weather_low_importance_service_channel_id', mName=Фоновые сервисы, mDescription=, mImportance=3, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=null, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=true, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=3, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='aqi_alert_channel_id', mName=Оповещения ИКВ, mDescription=, mImportance=3, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=3, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-      AppSettings: ru.yandex.translate (10700)
-        NotificationChannel{mId='ru.yandex.translate', mName=Переводчик, mDescription=, mImportance=2, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=2, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='account_security_notification_channel_id', mName=Безопасность аккаунта, mDescription=hasDescription , mImportance=4, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=true, mLightColor=-65536, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='passport_channel_group_id', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=4, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
-        NotificationChannel{mId='sign_in_notification_channel_id', mName=Вход, mDescription=hasDescription , mImportance=4, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=true, mLightColor=-65536, mVibration=null, mUserLockedFields=0, mFgServiceShown=false, mVibrationEnabled=false, mShowBadge=true, mDeleted=false, mDeletedTimeMs=-1, mGroup='passport_channel_group_id', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=4, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false}
---
-Diff[automaticRule[64128ec00e61494e83b5c03dd76da1f3].condition:null->Condition[state=STATE_FALSE,id=condition://com.google.android.apps.wellbeing.azr/winddown,summary=Ночной режим,line1=,line2=,icon=-1,flags=2]]
-    10-17 06:30:00.711 set_ringer_mode_internal: ZenModeHelper,i:normal->normal,e:silent->normal
-    10-17 06:30:00.738 set_zen_mode: off,conditionChanged
+10-18 11:25:25.869  1923  2739 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.871  1923  2370 V DisplayPowerController[0]: Brightness [0.056147106] reason changing to: 'automatic', previous reason: 'doze'.
+10-18 11:25:25.875  1923  3213 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.885  1923  3213 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.886  3158  3158 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.fod.MiuiGxzwIconView$3@c7c246b
+10-18 11:25:25.903  1923  3613 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.905  3158  3628 D MiuiGxzwAnimView: onDisplayChanged: oldState = 3, newState = 2
+10-18 11:25:25.906  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:25.906  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:25.909  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.910  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:25.910  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:25.913  3158  3158 D miui_face: requestFaceAuth()
+10-18 11:25:25.913  3158  3158 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.fod.MiuiGxzwAnimView$MiuiGxzwAnimViewInternal$2@25da19
+10-18 11:25:25.913  3158  3158 D MiuiBleUnlockHelper: verifyBLEDeviceRssi  isShowing = true isOccluded = false isMXtelcel = false isHiding = true isDeviceInteractive = true
+10-18 11:25:25.914  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.915  3829 14681 W MiuiAodService: stopDozing: 
+10-18 11:25:25.916  3158  3178 I MiuiDozeServiceHost: onDozingRequested: false
+10-18 11:25:25.924  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
+10-18 11:25:25.924  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
+10-18 11:25:25.928 27719 27982 I NearbyDiscovery: (REDACTED) ApFastPairScanner: eventType=%s, intReq=%s, scanning=%s, scanAllowed=%s, bleEnabled=%s, lockScanRate=%s, startScanningByLowPowerMode=%s
+10-18 11:25:25.929  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.934  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.935  3158  3158 I MiuiGxzwManager: stopDozing
+10-18 11:25:25.935  3158  3158 D MiuiGxzwOverlayView: stopDozing
+10-18 11:25:25.935  3158  3158 D MiuiGxzwViewIcon: stopDozing
+10-18 11:25:25.937  2870  4378 D MiuiKeyguardWallpaperRemoteService: onStartedWakingUp
+10-18 11:25:25.938  5779 29294 I PowerCenterProvider: call METHOD_GET_BATTERY_INFO
+10-18 11:25:25.938  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
+10-18 11:25:25.939  1178  1178 D SurfaceFlinger: Setting power mode 2 on display 4630947119594951809
+10-18 11:25:25.941  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.946  5779 29294 I PowerUtils: Device name:toco
+10-18 11:25:25.946  5779 29294 W PowerUtils: should not use this capacity value 5260
+10-18 11:25:25.946  1923  2739 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.947  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
+10-18 11:25:25.948  1923  3339 W ActivityManager: Sending non-protected broadcast zmbzid from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
+10-18 11:25:25.948  1923  3339 W ActivityManager: Sending non-protected broadcast zmbzid from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
+10-18 11:25:25.950  3158  3158 I KeyguardIndicationInjector: handleChargeTextAnimation: false;powerPluggedIn=true
+10-18 11:25:25.951  1923  2107 D ActivityTaskManager: Top Process State changed to PROCESS_STATE_TOP
+10-18 11:25:25.953  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
+10-18 11:25:25.953  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
+10-18 11:25:25.953  2870  2870 I BroadcastBinder: onNotify: com.miui.maml.data.BroadcastBinder@b01bf1e
+10-18 11:25:25.958  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.954  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436018): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
+10-18 11:25:25.954  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436019): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
+10-18 11:25:25.962  1632 14436 W MiuiBooster: "MiuiBoosterService requestCpuHighFreq: 10091, 1, 500"
+10-18 11:25:25.962  1632 14436 W MiuiBooster: "requestCpuHighFreq,final level:1,final timeoutms:500"
+10-18 11:25:25.962  1632 14436 W MiuiBooster: "perf_hint_hc start"
+10-18 11:25:25.962  1632 14436 W MiuiBooster: "big_core_value[level-1]:4095"
+10-18 11:25:25.962  1632 14436 W MiuiBooster: "little_core_value[level-1]:4095"
+10-18 11:25:25.963  1632 14436 W MiuiBooster: "perf_handle:118438"
+10-18 11:25:25.967  1632 14436 W MiuiBooster: "MiuiBoosterService requestCpuHighFreq: 10091, 1, 3000"
+10-18 11:25:25.964  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436020): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
+10-18 11:25:25.964  1103  1103 W perf@2.2-servic: type=1400 audit(0.0:436021): avc: denied { search } for name="1632" dev="proc" ino=39630444 scontext=u:r:vendor_hal_perf_default:s0 tcontext=u:r:miuibooster:s0 tclass=dir permissive=0
+10-18 11:25:25.967  1632 14436 W MiuiBooster: "perf_hint_hc start"
+10-18 11:25:25.967  1632 14436 W MiuiBooster: "big_core_value[level-1]:4095"
+10-18 11:25:25.967  1632 14436 W MiuiBooster: "little_core_value[level-1]:4095"
+10-18 11:25:25.967  1923  2739 V MiuiActivityTaskManagerServiceEx: dispatchActivityLifeState state = onResume
+10-18 11:25:25.967  1923  2739 V MiuiActivityTaskManagerServiceEx: dispatchActivityLifeState r = ActivityRecord{68f87fa u0 com.miui.home/.launcher.Launcher t2}
+10-18 11:25:25.968  1632 14436 W MiuiBooster: "perf_handle:118439"
+10-18 11:25:25.972  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10419, uidState = 3
+10-18 11:25:25.972  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10113, uidState = 3
+10-18 11:25:25.972  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10091, uidState = 2
+10-18 11:25:25.973  1178  1178 D SurfaceFlinger: FOD postPowerModeFOD 2
+10-18 11:25:25.973  1178  1178 D SurfaceFlinger: Finished setting power mode 2 on display 4630947119594951809
+10-18 11:25:25.981  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:25.982  1923  2105 I DreamController: Stopping dream: name=ComponentInfo{com.miui.aod/com.miui.aod.doze.DozeService}, isTest=false, canDoze=true, userId=0, reason='finished self'(from 'requested stopDream')
+10-18 11:25:25.986  3829  3873 I com.miui.aod: Explicit concurrent copying GC freed 1191KB AllocSpace bytes, 2(48KB) LOS objects, 75% free, 3717KB/14MB, paused 944us,61us total 50.002ms
+10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeMachine.transitionTo(DozeMachine.java:235)
+10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeMachine.requestState(DozeMachine.java:181)
+10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeMachine.requestState(DozeMachine.java:147)
+10-18 11:25:26.006  3829  3829 I DozeMachine: 	at com.miui.aod.doze.DozeService.onDreamingStopped(DozeService.java:218)
+10-18 11:25:26.006  3185  3185 D RecentsImpl: mActivityStateObserver com.miui.home.launcher.Launcher
+10-18 11:25:26.007  3185  3185 W RecentsImpl: onResumed className=com.miui.home.launcher.Launcher   mIsInAnotherPro=false   isKeyguardLocked=true
+10-18 11:25:26.019  3829  3829 I MiuiDozeScreenBrightnessController: unregister sensor listener
+10-18 11:25:26.019  3829  3829 I MiuiDozeScreenBrightnessController: unregister non ui sensor listener
+10-18 11:25:26.019  3829  3829 D WakeLock: longWakeLock : release from:MiuiDozeScreenBrightnessController#transitionTo hold:false
+10-18 11:25:26.019  3829  3829 D WakeLock: longWakeLock : release after:MiuiDozeScreenBrightnessController#transitionTo hold:false
+10-18 11:25:26.032  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:26.034  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:26.044  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.045  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:26.053  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:26.054  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:26.054  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:26.056  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:26.064  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:26.064  3158  3158 D MiuiFaceManager: inernational:true supportR:[ALL] nowR:RU
+10-18 11:25:26.081  3158  3158 I NotifierManager: releaseNotifier:TimeChanged  com.miui.maml.data.DateTimeVariableUpdater@1dcc139
+10-18 11:25:26.081  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$MultiBroadcastNotifier@bb5a0df
+10-18 11:25:26.082  3158  3158 I NotifierManager: releaseNotifier:android.intent.action.BATTERY_CHANGED  com.miui.maml.data.BatteryVariableUpdater@ed3a12c
+10-18 11:25:26.082  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$BroadcastNotifier@d75a98a
+10-18 11:25:26.082  3158  3158 I NotifierManager: releaseNotifier:android.media.VOLUME_CHANGED_ACTION  com.miui.maml.data.VolumeVariableUpdater@f7d6bfb
+10-18 11:25:26.082  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$BroadcastNotifier@c185e71
+10-18 11:25:26.082  3158  3158 I NotifierManager: releaseNotifier:DarkMode  com.miui.maml.data.DarkModeVariableUpdater@f8cd456
+10-18 11:25:26.083  3158  3158 I NotifierManager: onUnregister: com.miui.maml.NotifierManager$DarkModeNotifier@82cccd7
+10-18 11:25:26.140  3158  3628 I MiuiGxzwManager: releaseDrawWackLock
+10-18 11:25:26.144  1923  2155 I ActivityManager: Start proc 2591:com.google.android.cellbroadcastreceiver/u0a360 for broadcast {com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver} caller=android
+10-18 11:25:26.197  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 11
+10-18 11:25:26.209  3158  3158 D MiuiWallpaperClient: onKeyguardShowingChanged false
+10-18 11:25:26.210  2870  4378 D MiuiKeyguardWallpaperRemoteService: onKeyguardShowingChanged  showing = false
+10-18 11:25:26.211  3158  3158 D MiuiFastUnlockController: setWallPaperAsTarget asTarget=false
+10-18 11:25:26.214  1923  5357 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:26.218  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
+10-18 11:25:26.219  1923  3339 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
+10-18 11:25:26.219  1923  3339 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
+10-18 11:25:26.219  1923  2110 D MiuiPaperContrastOverlayStubImpl: papermode:updateTextureEyeCareLevel, texture eyecare enable:true
+10-18 11:25:26.221  3185  3275 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
+10-18 11:25:26.221  3185  3275 W RecentsImpl: adaptToTopActivity   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
+10-18 11:25:26.222  3185  3275 W RecentsImpl: onResumed className=com.miui.home.launcher.Launcher   mIsInAnotherPro=false   isKeyguardLocked=false
+10-18 11:25:26.222  2870  2870 E MiuiKeyguardWallpaper: live lock wallpaper is null
+10-18 11:25:26.222  3185  3275 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
+10-18 11:25:26.225  1923  5357 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:26.230  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.236  7999  8131 D PowerKeeper.AppStandby: disable standby chain
+10-18 11:25:26.240  3185  3185 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
+10-18 11:25:26.240  3185  3185 W RecentsImpl: adaptToTopActivity   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
+10-18 11:25:26.241  3185  3185 W RecentsImpl: onResumed className=com.miui.home.launcher.Launcher   mIsInAnotherPro=false   isKeyguardLocked=false
+10-18 11:25:26.241  7999  9528 D NetdExecutor: SND -> {enablemiuistandby disable} this=com.miui.powerkeeper.utils.NetdExecutor@4d599a6
+10-18 11:25:26.244  1923  2818 D MiuiFreeformOneTrackManager: aready bound
+10-18 11:25:26.244  1923  2818 D MiuiFreeFormGestureController: handleFreeFormReceiver intent=Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 }
+10-18 11:25:26.245  5779 27047 I com.miui.appmanager.AppManageUtils: startScan
+10-18 11:25:26.246  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.247  5471  5471 D miui.face.FaceService: lock screen passed
+10-18 11:25:26.250  1923  5357 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
+10-18 11:25:26.252  3158  3158 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.faceunlock.MiuiKeyguardFaceUnlockView$2@a32a1bd
+10-18 11:25:26.253  1923  3213 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
+10-18 11:25:26.253  3185  3275 W RecentsImpl: getTopActivity from observer.   cn=ComponentInfo{com.miui.home/com.miui.home.launcher.Launcher}
+10-18 11:25:26.265  3158  3158 I MiuiChargeController: dismissChargeAnimation: USER_PRESENT
+10-18 11:25:26.269 11107 11107 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1552 onStartInput(EditorInfo{EditorInfo{packageName=com.miui.home, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=2131361965, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+10-18 11:25:26.274  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.278  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
+10-18 11:25:26.286  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 3
+10-18 11:25:26.286  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 3
+10-18 11:25:26.290  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.294  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.298  5087  5087 I libnfc_nci: [INFO:PowerSwitch.cpp(154)] PowerSwitch::setLevel: level=PS-FULL (1)
+10-18 11:25:26.306  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.308  3158  3158 D MiuiCarrierTextController: updateCarrierText: t2
+10-18 11:25:26.312  5779  2614 I GameBoosterService: restartGameMode: com.miui.home
+10-18 11:25:26.328  5087  5087 I libnfc_nci: [INFO:PowerSwitch.cpp(258)] PowerSwitch::setModeOn(activated=0x1) : mCurrActivity=0x1
+10-18 11:25:26.329 27719  2498 I NearbySharing: Stopping Fast Init advertisement because we're not scanning in the foreground.
+10-18 11:25:26.331  5087  5902 I libnfc_nci: [INFO:NativeNfcManager.cpp(1152)] nfaDeviceManagementCallback: NFA_DM_SET_POWER_SUB_STATE_EVT; status=0x0
+10-18 11:25:26.334 27719  2498 I NearbySharing: Stopping advertising because no high power receive surface is registered and device is visible to HIDDEN.
+10-18 11:25:26.335  3158  3158 I MiuiGxzwManager: nofifySurfaceFlinger: statusbarShow = true
+10-18 11:25:26.340  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.356  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.358  1923  3339 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73))
+10-18 11:25:26.366  1923  4478 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73))
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: startScan error
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: java.lang.NoSuchMethodException: android.net.wifi.IWifiManager$Stub$Proxy.startScan [class java.lang.String]
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.lang.Class.getMethod(Class.java:2941)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.lang.Class.getDeclaredMethod(Class.java:2920)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at sf.e.d(SourceFile:4)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at com.miui.appmanager.AppManageUtils.E0(SourceFile:88)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at f3.b$a.a(SourceFile:29)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at f3.b$a.doInBackground(SourceFile:2)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at android.os.AsyncTask$3.call(AsyncTask.java:394)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+10-18 11:25:26.369  5779 27047 E com.miui.appmanager.AppManageUtils: 	at java.lang.Thread.run(Thread.java:1571)
+10-18 11:25:26.374  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:26.405  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
+10-18 11:25:26.405  3829 30167 I NotificationController: { mPackageName: android mClassName  mIsForegroundService false mHasProgressBar false}
+10-18 11:25:26.425  1923  1923 D MiuiWifiService: receive BroadcastReceiver action = : android.intent.action.USER_PRESENT, mIsWifiEnabled = : false, mIsWifiAutoDisabled = : false, mIsWifiWakeupEnabled = : false
+10-18 11:25:26.426 27719  2498 I NearbyMediums: Started BLE scanning, service-id=NearbySharing, is-extended-advert=true, power-level=2, scan-mode=3
+10-18 11:25:26.464  5779  5779 I PowerSaveService: onReceive: android.intent.action.SCREEN_ON
+10-18 11:25:26.464  5779  7741 D PowerNoticeUI: ScreenOnEvent
+10-18 11:25:26.471  2591  2591 D nativeloader: Load libforcedarkimpl.so using system ns (caller=/system/framework/miui-framework.jar): ok
+10-18 11:25:26.471  2591  2591 I MiuiForceDarkConfig: setConfig density:2.750000, mainRule:0, secondaryRule:0, tertiaryRule:0
+10-18 11:25:26.477  7999  8195 D LS-ForegroundStatusManager: onScreenChanged screenOn = true, mWorking = false
+10-18 11:25:26.478  7999  8122 E CpuruntimeResource: getPkgRuntimeInfo exception: /proc/package/pkg/show_fb_showall: open failed: EACCES (Permission denied)
+10-18 11:25:26.502  3433  3433 D MiuiScanManagerV2: Screen On
+10-18 11:25:26.506  3433  3433 D MiuiScanManager: Screen On
+10-18 11:25:26.508  3433  3433 D MiuiBT-PluginUpdatedReceiver: PluginUpdatedReceiver receive action: android.intent.action.SCREEN_ON
+10-18 11:25:26.508  3433  3433 I MiuiBT-PluginUpdatedReceiver: ACTION_SCREEN_ON current_time = 1792311926508 mLastDownloadTime = 1790333925239
+10-18 11:25:26.529  1923  3339 I ActivityManager: Killing 32566:com.milink.runtime/u0a139 (adj 985): empty #17
+10-18 11:25:26.532  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 19
+10-18 11:25:26.540  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 11
+10-18 11:25:26.546  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10360, uidState = 19
+10-18 11:25:26.579  1923  3339 D ActivityManagerServiceImpl: Service controller is not enabled.
+10-18 11:25:26.580  1923  2107 D MiuiCarService: process died uid= 10139
+10-18 11:25:26.580  1923  2107 D MiuiCarService: mCurrentState.get() != MiuiCarManager.CASTING_STATE_STARTED
+10-18 11:25:26.610 27719 27982 I NearbyDiscovery: (REDACTED) ApFastPairScanner: eventType=%s, intReq=%s, scanning=%s, scanAllowed=%s, bleEnabled=%s, lockScanRate=%s, startScanningByLowPowerMode=%s
+10-18 11:25:26.622  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 90000, uidState = 11
+10-18 11:25:26.622  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10032, uidState = 11
+10-18 11:25:26.627  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 90000, uidState = 17
+10-18 11:25:26.628  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10032, uidState = 16
+10-18 11:25:26.633  1923  4991 W BroadcastQueue: Skipping deliver [foreground] BroadcastRecord{f6d36a7 u-1 android.intent.action.SCREEN_ON} to ReceiverList{c703c54 32566 com.milink.runtime/10139/u0 remote:cd48fa7}: process gone or crashing
+10-18 11:25:26.637  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10074, uidState = 11
+10-18 11:25:26.640  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10074, uidState = 19
+10-18 11:25:27.607  3433  7966 D MiuiNearbyService: setAppConfig
+10-18 11:25:27.608  3433  7966 D MiuiNearbyService: setAppConfig : android.uid.system:1000 com.xiaomi.mi_connect_service android.bluetooth.action.BACKGROUND_SCANNING
+10-18 11:25:27.609  3433  7966 V MiuiAppCertUtil: checkPermission call from uid/pid 1000/15225
+10-18 11:25:27.629  6418 15635 D ProcessObserverV10: onForegroundServicesChanged:pid = 15225,uid=1000,serviceTypes=49
+10-18 11:25:27.629  1923  2107 D MediaProjectionManagerServiceStubImpl: handleForegroundServicesChanged
+10-18 11:25:27.637  1923  2107 D MediaProjectionManagerServiceStubImpl: handleForegroundServicesChanged
+10-18 11:25:27.637  6418 15635 D ProcessObserverV10: onForegroundServicesChanged:pid = 15225,uid=1000,serviceTypes=0
+10-18 11:25:27.887  1923  2564 D MIUIInput: [MotionEvent] publisher action=0x0, 1008951691, channel '99a8d06 StatusBar (server)'
+10-18 11:25:27.944  1923  4991 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
+10-18 11:25:27.944  1923  4991 W ActivityManager: Sending non-protected broadcast com.android.systemui.fsgesture from system 3158:com.android.systemui/1000 pkg com.android.systemui. Callers=
+10-18 11:25:27.955  1923  4991 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
+10-18 11:25:27.958  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:27.960  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
+10-18 11:25:27.963  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,73)(467,73,613,105))
+10-18 11:25:27.965  1923  4478 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:27.970  1923  4626 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:27.976  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:27.978  1923  2111 W MiuiFreeFormGesturePointerEventListener: setMiuiFreeFormTouchExcludeRegion mTouchExcludeRegion = SkRegion((0,0,1080,2340))
+10-18 11:25:27.991  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.008  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.024  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.027  1923  2564 D MIUIInput: [MotionEvent] publisher action=0x1, 1008951830, channel '99a8d06 StatusBar (server)'
+10-18 11:25:28.040  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.057  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.073  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.090  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.106  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.123  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:28.147  1178  1178 D CompositionEngine: writeOutputDependentGeometryStateToHWC layer[com.miui.home/com.miui.home.launcher.Launcher#0] set Z 134217729 miFodLayer 134217728
+10-18 11:25:32.766  5087  5087 D NfcService: Received android.intent.action.BATTERY_CHANGED
+10-18 11:25:32.767  5779  5779 I PowerUtils: getSurfaceTemprature temp: 37
+10-18 11:25:32.767  5779  5779 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
+10-18 11:25:32.768  5779  5779 I PowerNoticeUI: handleBatteryChanged oldPlugType 2 mPlugType 2 oldBatteryLevel 64 mBatteryLevel 64 temperature 361
+10-18 11:25:32.769  5779  5779 I ChargerBatteryIntelligenceReceiver: onBatteryChanged temperature：36,plugType:2
+10-18 11:25:32.770  7999  8298 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 64, status = 2, level = 64, plug = 2, scale = 100
+10-18 11:25:32.770  7999  8118 D PowerKeeper.Thermal: mBatteryTemperature: 36
+10-18 11:25:37.778  1923  4626 W ProcessStats: Tracking association SourceState{7f53b2c com.android.systemui/1000 BTopFgs #2106044} whose proc state 2 is better than process ProcessState{e545b95 com.miui.notification:remote/1000 pkg=com.miui.notification} proc state 3 (1147 skipped)
+10-18 11:25:37.797  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10482, uidState = 10
+10-18 11:25:37.797  1923  2652 I MiuiNetworkPolicy: updateUidState uid = 10242, uidState = 10
+10-18 11:25:40.918  5087  5087 D NfcService: Received android.intent.action.BATTERY_CHANGED
+10-18 11:25:40.919  7999  8298 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 64, status = 2, level = 64, plug = 2, scale = 100
+10-18 11:25:40.919  5779  5779 I PowerUtils: getSurfaceTemprature temp: 37
+10-18 11:25:40.920  7999  8118 D PowerKeeper.Thermal: mBatteryTemperature: 36
+10-18 11:25:40.920  5779  5779 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
+10-18 11:25:40.920  5779  5779 I PowerNoticeUI: handleBatteryChanged oldPlugType 2 mPlugType 2 oldBatteryLevel 64 mBatteryLevel 64 temperature 362
+10-18 11:25:40.920  1126  5281 E vendor.xiaomi.hardware.micharge@1.0-service: Failed to open node /sys/class/power_supply/wireless/reverse_chg_mode
+10-18 11:25:40.920  1126  5281 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/wireless/reverse_chg_mode value = 
+10-18 11:25:40.920  5779  5779 I ChargerBatteryIntelligenceReceiver: onBatteryChanged temperature：36,plugType:2
+10-18 11:25:40.923  1126  5281 I vendor.xiaomi.hardware.micharge@1.0-service: ReadFilePathValue path = /sys/class/power_supply/bms/fastcharge_mode value = 0
+10-18 11:25:43.340  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 2
+10-18 11:25:43.366  5010 18835 W MiuiPerfServiceClient: interceptAndQueuing:3158|com.android.systemui|1177|51|1008953119025574|Slow issue draw commands|64
+10-18 11:25:44.356  3154  3154 D DynamicService: modem or radio power state change,messageType: 128 state: 3
 
-  Condition providers:
-    Allowed condition providers:
-      com.miui.notification:com.google.android.apps.wellbeing:com.google.android.projection.gearhead (user: 0 isPrimary: true)
-      com.google.android.ext.services:com.miui.notification:com.xiaomi.wearable:com.google.android.projection.gearhead (user: 0 isPrimary: false)
-      com.huami.watch.hmwatchmanager:com.google.android.projection.gearhead (user: 999 isPrimary: false)
-    Has user set:
-      userId=0 value={org.xhns.audiobookstorrent.pro, com.internet.speedtest.check.wifi.meter, com.apkmirror.helper.prod, com.nextcloud.client, dssl.client, tv.remote.control.universal.smart.plus.tcl, com.yandex.yamb, com.google.android.ext.services, com.uniqlo.ru.catalogue, ru.datastack.artefact, ru.mos.myid, com.truecaller, sinet.startup.inDriver, com.vinteo.mobile.app, com.alibaba.aliexpresshd, me.rutrackersearch.app, com.utorrent.client, com.gokadzev.musify, com.huawei.health, ru.profi.client, com.plexapp.android, com.mgoogle.android.gms, screen.mirroring.screenmirroring, com.pingsecure.client.app, ru.trudvsem.mobile, ru.russianhighways.mobile, ru.technopark.app, io.github.krlvm.powertunnel.android, com.punicapp.whoosh, com.drivee.taxi.rides, app.revanced.android.youtube, com.huawei.appmarket, org.torproject.torbrowser_alpha, com.teremok.keys, ru.urentbike.app, com.hb.dialer.free, abdelrahman.wifianalyzerpro, com.mizuvoip.mizudroid.app, com.alphainventor.filemanager, ru.vsk.insurance, com.ru.dixy, de.szalkowski.activitylauncher, ru.megamarket.marketplace, com.fanok.audiobooks, ru.apteka, com.lonelycatgames.Xplore, free.tube.premium.advanced.tuber, ru.banki.banki, com.mc.amazfit1, com.office.document.viewer, ru.mosmetro.metro, ru.yandex.mobile.gasstations, com.google.android.signature, zip.rar.extractor.unzip.files.gz.sevenzip.opener, ie.equalit.ceno, ru.gosuslugi.auto, com.v2ray.ang, soft.gelios.com.scooter, com.lemon.lvoverseas, com.furnaghan.android.photoscreensaver, com.naver.labs.translator, org.execbit.rpker, ru.papajohns.app, com.google.ar.lens, org.zwanoo.android.speedtest, com.miui.notification, com.huawei.smarthome, com.readyforsky, ru.yandex.translate, com.tencent.mm, com.passeswallet.app, ru.involta.radio, us.zoom.videomeetings, ru.napoleonit.kb, ru.pedklin.telemed, ru.pichesky.rosneft, ru.beru.android, com.kwikpay.transfers, com.mybedy.antiradar, ru.ivi.client, com.zigzag_mobile.skorolek, ru.aliexpress.buyer, ak.alizandro.smartaudiobookplayer, org.telegram.messenger.web, com.ubnt.easyunifi, com.AN98, com.audiobook.app, com.deepseek.chat, com.supervpn.vpn.free.proxy, com.catalinagroup.callrecorder, com.melodis.midomiMusicIdentifier.freemium, com.google.android.apps.tachyon, com.vanced.android.youtube, ru.rtlabs.mobile.ebs.android, com.microsoft.office.outlook, com.yandex.shedevrus, ru.mail.cloud, ru.webinar.mobile, com.innersloth.spacemafia, org.torproject.android, app.rvx.android.apps.youtube.music, com.bitrix24.android, com.wildberries.ru, com.yuanwofei.cardemulator.pro, ru.getpharma.eapteka, com.google.android.apps.wellbeing, org.thunderdog.challegram, ru.cars.kicksharing, ru.sogaz.app, com.tcx.sipphone14, com.lastgimbus.the.freebuddy, pw.thedrhax.mosmetro, ru.burgerking, com.sipnetic.app, com.artteam.TitanGS, com.alterevit.gorod, com.bssys.vbrrretail, org.fdroid.fdroid, free.vpn.astro.rus, ru.yandex.telemost, ru.yazasoft.rateestate, com.microsoft.translator, com.xiaomi.xmsf, com.antivirus.applock.cleanbooster, com.huami.watch.hmwatchmanager, com.google.android.gms, com.google.android.gsf, com.google.android.apps.walletnfcrel, sanity.freeaudiobooks, ru.mts.smartmed, org.torproject.torbrowser, com.barco.clickshare.presenter, ru.tsk.ftc.bender.qpay, com.mc.huawei1, com.gopro.smarty, centrida.neftmagistral, com.tripadvisor.tripadvisor, com.spisokpokupokplus.com, io.github.muntashirakon.AppManager, com.kinopub, ru.unlimitedtech.express, com.itrack.millennium_fitness, com.aiart.artgenerator.photoeditor.aiimage, com.spotify.music, com.mavenir.android.apps.tele2, ru.myauchan.droid, com.wdc.wd2go, com.coloros.oppopods, com.vanced.android.apps.youtube.music, com.jakcom.timer, com.baidu.BaiduMap, at.nk.tools.iTranslate, com.xiaomi.wearable, com.didiglobal.passenger, com.teamviewer.teamviewer.market.mobile, com.octopod.russianpost.client.android, com.walletunion.wallet, com.mi.android.globalminusscreen, com.trueconf.videochat, com.hm.goe, ru.hendersonrus.android, tw.nekomimi.nekogram, com.pickme.passenger, com.ltech.unistream, ru.gosuslugi.pos, ru.dahl.messenger, ru.rabota.app2, com.yandex.lavka, io.walletpasses.android, diewland.screen.off, ru.berizaryad, ru.tripster.tripster, com.autonavi.minimap, com.google.android.projection.gearhead, ru.mos.ourcity, com.booking, com.camerasideas.trimmer, com.delphicoder.flud, ru.filit.mvideo.b2c, com.esaba.downloader, com.soundcloud.android, ru.letu, com.miui.screenshot, com.happproxy, com.careem.acma, ru.bus62.SmartTransport, com.imo.android.imoim, ru.vkusvill, ru.mail.mailapp, com.wireguard.android, app.organicmaps, cast.video.screenmirroring.casttotv, ru.globus.app, com.akslabs.cloudgallery, com.heytap.headset, ru.yandex.weatherplugin, app.rvx.android.youtube, ru.rolf.rolf, ru.altarix.mos.reception, com.google.android.apps.adm, com.xiaomi.hm.health, ru.sberbankmobile, ru.nspk.mir.loyalty, com.zoiper.android.app, dev.rokitskiy.gtr2_watchface, com.eg.android.AlipayGphone, com.google.android.photopicker, ru.akado.mobile.office, com.notissimus.allinstruments.android, com.yandex.aliceapp, ru.yamaguchi.android, air.StrelkaHUDFREE, com.ng_labs.dateandtime.pro, com.view.ppcs, com.lamoda.lite, ru.fns.lkfl, io.ffuel.turbo, ru.tutu.tutu_emp, org.nixgame.ruler, pl.mobimax.cameraopus}
-      userId=999 value={com.huami.watch.hmwatchmanager, com.google.android.projection.gearhead}
-(user 0):   All condition providers (0) enabled for current profiles:
-(user 999):   All condition providers (0) enabled for current profiles:
-    Live condition providers (3):
-      ComponentInfo{android/com.android.server.notification.CountdownConditionProvider} (user 0): android.service.notification.ConditionProviderService$Provider@8e281ca SYSTEM
-      ComponentInfo{android/com.android.server.notification.ScheduleConditionProvider} (user 0): android.service.notification.ConditionProviderService$Provider@838ff3b SYSTEM
-      ComponentInfo{android/com.android.server.notification.EventConditionProvider} (user 0): android.service.notification.ConditionProviderService$Provider@aad658 SYSTEM
-    Snoozed condition providers (0):
-    mRecords(1):
-      ConditionRecord[id=condition://android/schedule?days=1.2.3.4.5.6.7&start=22.0&end=6.30&exitAtAlarm=false,component=ComponentInfo{android/com.android.server.notification.ScheduleConditionProvider},subscribed=true]
---
-      numAlertViolations=0
-      numVibViolations=0
-      numQuotaViolations=0
-      numImagesRemoved=0
-      note_imp_noisy_: [0, 0, 0, 71, 12, 0]
-      note_imp_quiet_: [0, 0, 0, 9, 31, 0]
-      note_importance_: [0, 0, 46, 52, 25, 0]
-      numUndecorateRVs=21
-    }
-    AggregatedStats{
-      key='com.lastgimbus.the.freebuddy',
-      numEnqueuedByApp=12,
-      numPostedByApp=12,
-      numUpdatedByApp=0,
-      numRemovedByApp=0,
-      numPeopleCacheHit=83,
-      numWithStaredPeople=0,
-      numWithValidPeople=0,
-      numPeopleCacheMiss=0,
-      numBlocked=0,
-      numSuspendedByAdmin=0,
+
+
+adb shell dumpsys activity services com.lastgimbus.the.freebuddy
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  (nothing)
+
+
+
+adb shell dumpsys deviceidle whitelist \
+>   | grep com.lastgimbus.the.freebuddy
+user,com.lastgimbus.the.freebuddy,10843
 
