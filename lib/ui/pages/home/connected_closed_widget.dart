@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
 
-import '../../../cubit/headphones_connection_cubit.dart';
+import '../../../platform_stuff/android/background/foreground_service.dart';
 
 class ConnectedClosedWidget extends StatelessWidget {
   const ConnectedClosedWidget({super.key});
@@ -25,7 +25,7 @@ class ConnectedClosedWidget extends StatelessWidget {
         Text(l.pageHomeConnectedClosedDesc, textAlign: TextAlign.center),
         const SizedBox(height: 32),
         FilledButton(
-          onPressed: () => context.read<HeadphonesConnectionCubit>().connect(),
+          onPressed: () => nativeMonitorChannel.invokeMethod<void>('start'),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(l.pageHomeConnectedClosedConnect),
