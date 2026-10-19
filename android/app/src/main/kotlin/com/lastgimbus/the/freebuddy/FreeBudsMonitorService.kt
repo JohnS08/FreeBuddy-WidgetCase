@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import androidx.glance.appwidget.GlanceAppWidgetManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -149,8 +150,13 @@ class FreeBudsMonitorService : Service() {
 
     private fun updateWidgets() {
         widgetScope.launch {
-            BatteryWidget().updateAll(this@FreeBudsMonitorService)
-            CaseBatteryWidget().updateAll(this@FreeBudsMonitorService)
+            val manager = GlanceAppWidgetManager(this@FreeBudsMonitorService)
+            manager.getGlanceIds(BatteryWidget::class.java).forEach { id ->
+                BatteryWidget().update(this@FreeBudsMonitorService, id)
+            }
+            manager.getGlanceIds(CaseBatteryWidget::class.java).forEach { id ->
+                CaseBatteryWidget().update(this@FreeBudsMonitorService, id)
+            }
         }
     }
 
