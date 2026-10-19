@@ -16,7 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FreeBudsMonitorService : Service() {
     companion object {
@@ -35,15 +37,20 @@ class FreeBudsMonitorService : Service() {
     private lateinit var worker: Handler
     private lateinit var notificationManager: NotificationManager
     private val widgetScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private val bluetoothScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private lateinit var bluetoothWorker: FreeBudsRfcommWorker
+    private var pollJob: Job? = null
 
     override fun onCreate() {
         super.onCreate()
-        notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         createChannels()
         workerThread = HandlerThread("FreeBudsMonitor").also { it.start() }
         worker = Handler(workerThread.looper)
+        bluetoothWorker = FreeBudsRfcommWorker(this)
         startForegroundCompat()
         scheduleMaintenance()
+        scheduleBluetoothPoll(0L)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -53,7 +60,7 @@ class FreeBudsMonitorService : Service() {
                 stopSelf()
             }
             ACTION_STATE_UPDATED -> worker.post { refreshNativeOutputs() }
-            ACTION_START, null -> worker.post { refreshNativeOutputs() }
+            ACTION_START, null -> scheduleBluetoothPoll(0L)
         }
         return START_STICKY
     }
@@ -61,16 +68,41 @@ class FreeBudsMonitorService : Service() {
     private fun scheduleMaintenance() {
         worker.postDelayed(object : Runnable {
             override fun run() {
-                refreshNativeOutputs()
+                scheduleBluetoothPoll(0L)
                 worker.postDelayed(this, TICK_MS)
             }
         }, TICK_MS)
     }
 
-    /**
-     * Phase 1 of the migration: the native service owns output delivery.
-     * Bluetooth acquisition will be added here in the next phase.
-     */
+    private fun scheduleBluetoothPoll(delayMillis: Long) {
+        worker.postDelayed({
+            if (pollJob?.isActive != true) {
+                pollJob = bluetoothScope.launch {
+                    val state = bluetoothWorker.poll()
+                    if (state != null) {
+                        persistBatteryState(state)
+                        withContext(Dispatchers.Main.immediate) {
+                            refreshNativeOutputs()
+                        }
+                    }
+                }
+            }
+        }, delayMillis)
+    }
+
+    private fun persistBatteryState(state: FreeBudsRfcommWorker.BatteryState) {
+        NativeMonitorState.prefs(this).edit()
+            .putInt(NativeMonitorState.LEFT_LEVEL, state.left ?: -1)
+            .putInt(NativeMonitorState.RIGHT_LEVEL, state.right ?: -1)
+            .putInt(NativeMonitorState.CASE_LEVEL, state.case ?: -1)
+            .putBoolean(NativeMonitorState.LEFT_CHARGING, state.leftCharging)
+            .putBoolean(NativeMonitorState.RIGHT_CHARGING, state.rightCharging)
+            .putBoolean(NativeMonitorState.CASE_CHARGING, state.caseCharging)
+            .putLong(NativeMonitorState.UPDATED_AT, System.currentTimeMillis())
+            .apply()
+    }
+
+    /** The native service is the sole owner of background output delivery. */
     private fun refreshNativeOutputs() {
         updateWidgets()
         postLowBatteryNotificationIfNeeded()
@@ -162,6 +194,7 @@ class FreeBudsMonitorService : Service() {
 
     override fun onDestroy() {
         worker.removeCallbacksAndMessages(null)
+        bluetoothScope.cancel()
         workerThread.quitSafely()
         widgetScope.coroutineContext.cancel()
         super.onDestroy()
