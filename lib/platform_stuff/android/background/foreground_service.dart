@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 
 import '../../../logger.dart';
 import 'periodic.dart' as periodic;
 
 const _serviceId = 43929;
+const nativeMonitorChannel = MethodChannel(
+  'com.lastgimbus.the.freebuddy/native_monitor',
+);
 
 @pragma('vm:entry-point')
 void foregroundTaskCallback() {
@@ -55,6 +59,13 @@ class _FreeBuddyTaskHandler extends TaskHandler {
 }
 
 Future<void> initForegroundService() async {
+  await nativeMonitorChannel.invokeMethod<void>('start');
+  return;
+
+  // Legacy Flutter service retained temporarily while the native protocol is
+  // migrated. It is intentionally unreachable to prevent RFCOMM from running
+  // on the Flutter isolate.
+  // ignore: dead_code
   FlutterForegroundTask.init(
     androidNotificationOptions: AndroidNotificationOptions(
       channelId: 'freebuddy_foreground_service',

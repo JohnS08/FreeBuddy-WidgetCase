@@ -47,22 +47,24 @@ class BatteryWidget : GlanceAppWidget() {
         get() = HomeWidgetGlanceStateDefinition()
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
+        val prefs = NativeMonitorState.prefs(context)
         // TODO in future: Charging, but only when updates will be more "live"
         // currently there is so much lag between updates that it doesn't make sense :/
         // but it will if we'll have foreground service or something
         provideContent {
-            GlanceContent(context, currentState())
+            GlanceContent(
+                context,
+                prefs.getInt(NativeMonitorState.LEFT_LEVEL, -1),
+                prefs.getInt(NativeMonitorState.RIGHT_LEVEL, -1),
+                prefs.getInt(NativeMonitorState.CASE_LEVEL, -1),
+            )
         }
     }
 
     @SuppressLint("RestrictedApi")
     @Composable
-    private fun GlanceContent(context: Context, currentState: HomeWidgetGlanceState) {
+    private fun GlanceContent(context: Context, left: Int, right: Int, case: Int) {
         GlanceTheme {
-            val sp = currentState.preferences
-            val left = sp.getInt("left", -1)
-            val right = sp.getInt("right", -1)
-            val case = sp.getInt("case", -1)
             val size = LocalSize.current
             val barColor = ColorProvider(R.color.battery_widget_bar_color)
             val barBackground = ColorProvider(R.color.battery_widget_bar_background)

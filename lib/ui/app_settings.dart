@@ -2,6 +2,7 @@
 // I need to write like 10 lines for every new settings, and it's probably not
 // working correctly. Use rxdart or smth
 import 'package:async/async.dart';
+import 'package:flutter/services.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 abstract class AppSettings {
@@ -83,6 +84,11 @@ class SharedPreferencesAppSettings implements AppSettings {
       LazyStream(() => _caseBatteryThreshold);
 
   @override
-  Future<bool> setCaseBatteryThreshold(int value) =>
-      _caseBatteryThreshold.then((v) => v.setValue(value));
+  Future<bool> setCaseBatteryThreshold(int value) async {
+    final changed = await _caseBatteryThreshold.then((v) => v.setValue(value));
+    await const MethodChannel(
+      'com.lastgimbus.the.freebuddy/native_monitor',
+    ).invokeMethod<void>('setThreshold', value);
+    return changed;
+  }
 }

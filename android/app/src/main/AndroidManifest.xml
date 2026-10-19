@@ -56,6 +56,11 @@
             android:foregroundServiceType="connectedDevice"
             android:exported="false" />
 
+        <service
+            android:name=".FreeBudsMonitorService"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false" />
+
         <receiver
             android:name=".BatteryWidgetReceiver"
             android:exported="false">

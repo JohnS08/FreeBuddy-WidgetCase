@@ -96,6 +96,7 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
     // All of this for AppWidgets support
     // ...but looks like we don't need those for now...
 //    implementation "androidx.compose.runtime:runtime:1.7.6"

@@ -31,13 +31,18 @@ class CaseBatteryWidget : GlanceAppWidget() {
         get() = HomeWidgetGlanceStateDefinition()
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
-        provideContent { Content(context, currentState()) }
+        val prefs = NativeMonitorState.prefs(context)
+        provideContent {
+            Content(
+                context,
+                prefs.getInt(NativeMonitorState.CASE_LEVEL, -1),
+                prefs.getBoolean(NativeMonitorState.CASE_CHARGING, false),
+            )
+        }
     }
 
     @Composable
-    private fun Content(context: Context, state: HomeWidgetGlanceState) {
-        val level = state.preferences.getInt("case", -1)
-        val charging = state.preferences.getBoolean("case_charging", false)
+    private fun Content(context: Context, level: Int, charging: Boolean) {
         val size = LocalSize.current
         val textStyle = TextDefaults.defaultTextStyle.copy(
             color = ColorProvider(R.color.battery_widget_text_color),
