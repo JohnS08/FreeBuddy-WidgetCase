@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
 
 import '../../../platform_stuff/android/background/foreground_service.dart';
