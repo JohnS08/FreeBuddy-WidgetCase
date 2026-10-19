@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freebuddy/l10n/generated/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_foreground_task/flutter_foreground_task.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
@@ -26,19 +26,18 @@ import 'ui/theme/themes.dart';
 
 void main() {
   final bind = WidgetsFlutterBinding.ensureInitialized();
-  FlutterForegroundTask.initCommunicationPort();
   // This is so that we try to connect to headphones under splash screen
   // This will make it more smooth to the user
   FlutterNativeSplash.preserve(widgetsBinding: bind);
   runApp(const MyAppWrapper());
 
   if (!kIsWeb && Platform.isAndroid) {
-    // Do not block the first Flutter frame on WorkManager, notification
-    // permission dialogs, or foreground-service startup.
+    // Do not block the first Flutter frame on permission dialogs or service startup.
     Future<void>.delayed(Duration.zero, () async {
       try {
-        await android_periodic.init();
-        await android_periodic.requestNotificationPermissionFromUi();
+        if (await Permission.notification.isDenied) {
+          await Permission.notification.request();
+        }
         // Let the UI cubit finish Bluetooth initialization before the service
         // starts. Starting both cubits in the same frame makes them kill each
         // other through IsolateNameServer and can freeze the activity.

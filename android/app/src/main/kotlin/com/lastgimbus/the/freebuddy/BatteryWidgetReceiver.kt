@@ -1,7 +1,7 @@
 package com.lastgimbus.the.freebuddy
 
-import HomeWidgetGlanceWidgetReceiver
+import androidx.glance.appwidget.GlanceAppWidgetReceiver
 
-class BatteryWidgetReceiver : HomeWidgetGlanceWidgetReceiver<BatteryWidget>() {
+class BatteryWidgetReceiver : GlanceAppWidgetReceiver() {
     override val glanceAppWidget = BatteryWidget()
 }

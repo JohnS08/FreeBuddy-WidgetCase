@@ -1,7 +1,9 @@
 package com.lastgimbus.the.freebuddy
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
+import android.provider.Settings
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -47,6 +49,16 @@ class MainActivity : FlutterActivity() {
                                 .putInt(NativeMonitorState.THRESHOLD, threshold)
                                 .apply()
                             sendStateUpdated()
+                        }
+                        result.success(null)
+                    }
+                    "requestBackgroundPermissions" -> {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            val intent = Intent(
+                                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                                Uri.parse("package:$packageName"),
+                            )
+                            runCatching { startActivity(intent) }
                         }
                         result.success(null)
                     }

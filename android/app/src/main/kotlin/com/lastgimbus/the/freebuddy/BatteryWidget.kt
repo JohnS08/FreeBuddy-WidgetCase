@@ -1,7 +1,5 @@
 package com.lastgimbus.the.freebuddy
 
-import HomeWidgetGlanceState
-import HomeWidgetGlanceStateDefinition
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -14,7 +12,6 @@ import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.*
 import androidx.glance.layout.*
-import androidx.glance.state.GlanceStateDefinition
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextAlign
@@ -42,9 +39,6 @@ class BatteryWidget : GlanceAppWidget() {
         )
     )
 
-
-    override val stateDefinition: GlanceStateDefinition<*>
-        get() = HomeWidgetGlanceStateDefinition()
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val prefs = NativeMonitorState.prefs(context)

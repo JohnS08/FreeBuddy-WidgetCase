@@ -1,115 +1,18 @@
-import 'dart:async';
-import 'dart:ui';
-
 import 'package:flutter/services.dart';
-import 'package:flutter_foreground_task/flutter_foreground_task.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-import '../../../logger.dart';
-import 'periodic.dart' as periodic;
-
-const _serviceId = 43929;
 const nativeMonitorChannel = MethodChannel(
   'com.lastgimbus.the.freebuddy/native_monitor',
 );
 
-@pragma('vm:entry-point')
-void foregroundTaskCallback() {
-  DartPluginRegistrant.ensureInitialized();
-  FlutterForegroundTask.setTaskHandler(_FreeBuddyTaskHandler());
-}
-
-class _FreeBuddyTaskHandler extends TaskHandler {
-  @override
-  Future<void> onStart(DateTime timestamp, TaskStarter starter) async {
-    await periodic.initNotifications();
-    await _poll();
-  }
-
-  @override
-  void onRepeatEvent(DateTime timestamp) {
-    unawaited(_poll());
-  }
-
-  Future<void> _poll() async {
-    try {
-      await periodic.routineUpdateCallback()
-          .timeout(periodic.commonTimeout);
-    } catch (error, stackTrace) {
-      loggI.w('Foreground battery poll failed',
-          error: error, stackTrace: stackTrace);
-    }
-  }
-
-  @override
-  Future<void> onDestroy(DateTime timestamp, bool isTimeout) async {}
-
-  @override
-  void onReceiveData(Object data) {}
-
-  @override
-  void onNotificationButtonPressed(String id) {}
-
-  @override
-  void onNotificationPressed() {
-    FlutterForegroundTask.launchApp('/');
-  }
-
-  @override
-  void onNotificationDismissed() {}
-}
-
 Future<void> initForegroundService() async {
   await nativeMonitorChannel.invokeMethod<void>('start');
-  return;
-
-  // Legacy Flutter service retained temporarily while the native protocol is
-  // migrated. It is intentionally unreachable to prevent RFCOMM from running
-  // on the Flutter isolate.
-  // ignore: dead_code
-  FlutterForegroundTask.init(
-    androidNotificationOptions: AndroidNotificationOptions(
-      channelId: 'freebuddy_foreground_service',
-      channelName: 'FreeBuddy работает в фоне',
-      channelDescription:
-          'Нужно для мониторинга Bluetooth и уведомлений о заряде кейса',
-      onlyAlertOnce: true,
-      channelImportance: NotificationChannelImportance.LOW,
-      priority: NotificationPriority.LOW,
-      showWhen: false,
-    ),
-    iosNotificationOptions: const IOSNotificationOptions(
-      showNotification: false,
-      playSound: false,
-    ),
-    foregroundTaskOptions: ForegroundTaskOptions(
-      eventAction: ForegroundTaskEventAction.repeat(60000),
-      autoRunOnBoot: true,
-      autoRunOnMyPackageReplaced: true,
-      allowWakeLock: true,
-      allowWifiLock: false,
-    ),
-  );
-
-  if (await FlutterForegroundTask.isRunningService) return;
-
-  await FlutterForegroundTask.startService(
-    serviceId: _serviceId,
-    serviceTypes: [ForegroundServiceTypes.connectedDevice],
-    notificationTitle: 'FreeBuddy работает в фоне',
-    notificationText: 'Мониторинг заряда кейса включён',
-    callback: foregroundTaskCallback,
-  );
 }
 
-/// Called from an explicit settings action, not during application startup.
+/// Requests only permissions that must be initiated from the visible Activity.
 Future<void> requestBackgroundPermissions() async {
-  final notificationPermission =
-      await FlutterForegroundTask.checkNotificationPermission();
-  if (notificationPermission != NotificationPermission.granted) {
-    await FlutterForegroundTask.requestNotificationPermission();
+  if (await Permission.notification.isDenied) {
+    await Permission.notification.request();
   }
-
-  if (!await FlutterForegroundTask.isIgnoringBatteryOptimizations) {
-    await FlutterForegroundTask.requestIgnoreBatteryOptimization();
-  }
+  await nativeMonitorChannel.invokeMethod<void>('requestBackgroundPermissions');
 }

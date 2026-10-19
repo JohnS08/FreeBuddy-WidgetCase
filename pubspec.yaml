@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.3.41+41
+version: 1.0.0+100
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -31,7 +31,6 @@ dependencies:
     sdk: flutter
 
   # Platform plugins
-  #  flutter_foreground_task: ^4.1.0 - not using it really yet
   the_last_bluetooth:
     git:
       url: https://github.com/TheLastGimbus/the_last_bluetooth.git
@@ -41,11 +40,8 @@ dependencies:
   url_launcher: ^6.3.0
   permission_handler: ^11.3.0
   dynamic_color: ^1.7.0
-  home_widget: ^0.7.0
-  flutter_local_notifications: ^18.0.1
   shared_preferences: ^2.3.3
   package_info_plus: ^8.0.2
-  flutter_foreground_task: ^10.0.0
   flutter_native_splash: ^2.4.0
 
   # Logic libs
